@@ -37,20 +37,52 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) =
         }`}>
           <div className="flex items-center justify-between px-6 py-3">
             
-            {/* Logo Section */}
+            {/* Enhanced UPSTRAIQ Logo */}
             <div 
               onClick={() => setCurrentPage('home')}
-              className="flex items-center gap-3 cursor-pointer group"
+              className="flex items-center gap-4 cursor-pointer group"
             >
+              {/* Logo Icon with Modern Design */}
               <div className="relative">
-                <div className="w-10 h-10 bg-gradient-to-br from-[#0070f3] to-[#50e3c2] rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
-                  <span className="text-white font-bold text-lg">U</span>
+                {/* Main Logo Container */}
+                <div className="relative w-12 h-12 rounded-xl bg-gradient-to-br from-[#0070f3] via-[#1e40af] to-[#50e3c2] p-0.5 group-hover:scale-110 transition-all duration-300">
+                  <div className="w-full h-full rounded-[10px] bg-black/90 flex items-center justify-center relative overflow-hidden">
+                    {/* Animated Background */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#0070f3]/20 via-transparent to-[#50e3c2]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    
+                    {/* Letter U with Modern Typography */}
+                    <div className="relative z-10 text-white font-bold text-xl leading-none">
+                      <span className="bg-gradient-to-br from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent group-hover:from-[#0070f3] group-hover:to-[#50e3c2] transition-all duration-300">
+                        U
+                      </span>
+                    </div>
+                    
+                    {/* Decorative Elements */}
+                    <div className="absolute top-1 right-1 w-1 h-1 rounded-full bg-[#50e3c2] opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute bottom-1 left-1 w-0.5 h-0.5 rounded-full bg-[#0070f3] opacity-40 group-hover:opacity-80 transition-opacity duration-300"></div>
+                  </div>
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-br from-[#0070f3] to-[#50e3c2] rounded-xl opacity-20 group-hover:opacity-40 transition-opacity duration-300 blur-sm"></div>
+                
+                {/* Glow Effect */}
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-[#0070f3] to-[#50e3c2] opacity-0 group-hover:opacity-30 transition-opacity duration-300 blur-md -z-10"></div>
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent group-hover:from-[#0070f3] group-hover:to-[#50e3c2] transition-all duration-300">
-                Upstraiq
-              </span>
+              
+              {/* Company Name with Enhanced Typography */}
+              <div className="flex flex-col">
+                {/* Main Brand Name */}
+                <div className="flex items-baseline gap-0.5">
+                  <span className="text-2xl font-bold tracking-tight bg-gradient-to-r from-white via-gray-100 to-gray-200 bg-clip-text text-transparent group-hover:from-[#0070f3] group-hover:via-blue-300 group-hover:to-[#50e3c2] transition-all duration-500">
+                    UPSTRAIQ
+                  </span>
+                  {/* AI Indicator */}
+                  <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-[#0070f3] to-[#50e3c2] opacity-80 group-hover:opacity-100 group-hover:scale-125 transition-all duration-300 ml-1 mt-1"></div>
+                </div>
+                
+                {/* Tagline */}
+                <span className="text-xs text-gray-400 tracking-wider font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-1 group-hover:translate-y-0">
+                  AI Solutions
+                </span>
+              </div>
             </div>
 
             {/* Desktop Navigation */}

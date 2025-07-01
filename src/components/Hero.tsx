@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowRight, Bot, Zap, Globe, Smartphone, Brain, Code, Star, TrendingUp, Shield } from 'lucide-react';
-import { useTheme } from '../App';
 
 interface HeroProps {
   onContactClick?: () => void;
@@ -9,7 +8,6 @@ interface HeroProps {
 export const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const { isDarkMode } = useTheme();
 
   const rotatingWords = ['AI', 'Innovation', 'Technology', 'Solutions'];
 
@@ -29,11 +27,7 @@ export const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Subtle gradient overlay */}
-        <div className={`absolute inset-0 opacity-50 ${
-          isDarkMode 
-            ? 'bg-gradient-to-br from-black via-black to-gray-900' 
-            : 'bg-gradient-to-br from-gray-50 via-white to-gray-100'
-        }`}></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-black to-gray-900 opacity-50"></div>
         
         {/* Floating elements */}
         <div className="absolute top-20 left-10 w-2 h-2 bg-[#0070f3] rounded-full animate-pulse"></div>
@@ -53,8 +47,8 @@ export const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
           {/* Main heading with rotating words */}
           <div className={`space-y-6 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <h1 className="heading-xl leading-tight">
-              <span className={`block ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Automating Your Future</span>
-              <span className={`block ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>with{' '}
+              <span className="block text-white">Automating Your Future</span>
+              <span className="block text-white">with{' '}
                 <span className="relative inline-block">
                   <span className="gradient-text-accent transition-all duration-500">
                     {rotatingWords[currentWordIndex]}
@@ -86,7 +80,7 @@ export const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
 
           {/* Enhanced Services Preview Grid */}
           <div className={`mt-20 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h2 className={`text-2xl font-semibold mb-12 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>What We Build</h2>
+            <h2 className="text-2xl font-semibold text-white mb-12">What We Build</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {/* AI Marketing */}
               <div className="group relative">
@@ -94,7 +88,7 @@ export const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
                   <div className="w-14 h-14 bg-gradient-to-br from-[#0070f3] to-[#50e3c2] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                     <Brain size={24} className="text-white" />
                   </div>
-                  <h3 className={`text-xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>AI Marketing Automation</h3>
+                  <h3 className="text-xl font-semibold text-white mb-4">AI Marketing Automation</h3>
                   <p className="text-[#888] leading-relaxed mb-6">
                     Intelligent automation that optimizes campaigns, personalizes content, and drives conversions using advanced machine learning.
                   </p>
@@ -112,7 +106,7 @@ export const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
                   <div className="w-14 h-14 bg-gradient-to-br from-[#50e3c2] to-[#0070f3] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                     <Code size={24} className="text-white" />
                   </div>
-                  <h3 className={`text-xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Web & Mobile Apps</h3>
+                  <h3 className="text-xl font-semibold text-white mb-4">Web & Mobile Apps</h3>
                   <p className="text-[#888] leading-relaxed mb-6">
                     High-performance applications built with cutting-edge technologies, AI integration, and modern development practices.
                   </p>
@@ -130,7 +124,7 @@ export const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
                   <div className="w-14 h-14 bg-gradient-to-br from-[#0070f3] to-[#50e3c2] rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                     <Bot size={24} className="text-white" />
                   </div>
-                  <h3 className={`text-xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Custom AI Solutions</h3>
+                  <h3 className="text-xl font-semibold text-white mb-4">Custom AI Solutions</h3>
                   <p className="text-[#888] leading-relaxed mb-6">
                     Custom chatbots, machine learning models, and intelligent automation systems tailored to your business needs.
                   </p>

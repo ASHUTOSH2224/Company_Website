@@ -14,6 +14,26 @@
   --grid-color: #333333;
 }
 
+/* Light mode variables */
+html.light {
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --card-bg: rgba(0, 0, 0, 0.02);
+  --grid-color: #f1f5f9;
+}
+
+/* Dark mode variables */
+html.dark {
+  --background: #000000;
+  --foreground: #ffffff;
+  --muted: #888888;
+  --border: #333333;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --grid-color: #333333;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;

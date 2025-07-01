@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Home, Briefcase, User, Mail, Moon, Sun } from 'lucide-react';
+import { useTheme } from '../App';
 
 interface HeaderProps {
   currentPage: string;
@@ -9,7 +10,7 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [darkMode, setDarkMode] = useState(true);
+  const { isDarkMode, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,9 +34,11 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) =
     }`}>
       <div className="container mx-auto px-4 max-w-7xl">
         {/* Main Navigation Container */}
-        <div className={`relative backdrop-blur-lg bg-white/10 border border-white/20 rounded-2xl shadow-2xl transition-all duration-300 ${
-          isScrolled ? 'shadow-xl' : 'shadow-2xl'
-        }`}>
+        <div className={`relative backdrop-blur-lg rounded-2xl shadow-2xl transition-all duration-300 border ${
+          isDarkMode 
+            ? 'bg-black/80 border-gray-800/50' 
+            : 'bg-white/90 border-gray-200/50'
+        } ${isScrolled ? 'shadow-xl' : 'shadow-2xl'}`}>
           <div className="flex items-center justify-between px-6 py-3">
             
             {/* Logo Section */}
@@ -49,14 +52,22 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) =
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-br from-[#0070f3] to-[#50e3c2] rounded-xl opacity-20 group-hover:opacity-40 transition-opacity duration-300 blur-sm"></div>
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent group-hover:from-[#0070f3] group-hover:to-[#50e3c2] transition-all duration-300">
+              <span className={`text-xl font-bold transition-all duration-300 ${
+                isDarkMode 
+                  ? 'bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent group-hover:from-[#0070f3] group-hover:to-[#50e3c2]'
+                  : 'bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent group-hover:from-[#0070f3] group-hover:to-[#50e3c2]'
+              }`}>
                 Upstraiq
               </span>
             </div>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center">
-              <div className="flex items-center bg-white/5 backdrop-blur-sm rounded-2xl p-2 border border-white/10">
+              <div className={`flex items-center backdrop-blur-sm rounded-2xl p-2 border transition-all duration-300 ${
+                isDarkMode 
+                  ? 'bg-gray-900/30 border-gray-700/30' 
+                  : 'bg-gray-100/50 border-gray-300/30'
+              }`}>
                 {navigationItems.map((item, index) => {
                   const Icon = item.icon;
                   const isActive = currentPage === item.id;
@@ -67,8 +78,12 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) =
                       onClick={() => setCurrentPage(item.id)}
                       className={`group relative flex items-center gap-2 px-4 py-2.5 rounded-xl transition-all duration-300 ${
                         isActive 
-                          ? 'bg-white/20 text-white shadow-lg' 
-                          : 'text-gray-300 hover:text-white hover:bg-white/10'
+                          ? isDarkMode
+                            ? 'bg-gray-800/60 text-white shadow-lg' 
+                            : 'bg-white/80 text-gray-900 shadow-lg'
+                          : isDarkMode
+                            ? 'text-gray-300 hover:text-white hover:bg-gray-800/40'
+                            : 'text-gray-600 hover:text-gray-900 hover:bg-white/60'
                       }`}
                     >
                       <Icon 
@@ -93,13 +108,21 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) =
             <div className="hidden md:flex items-center gap-3">
               {/* Theme Toggle */}
               <button
-                onClick={() => setDarkMode(!darkMode)}
-                className="p-2.5 rounded-xl bg-white/10 border border-white/20 hover:bg-white/20 transition-all duration-300 group"
+                onClick={toggleTheme}
+                className={`p-2.5 rounded-xl border transition-all duration-300 group ${
+                  isDarkMode 
+                    ? 'bg-gray-900/40 border-gray-700/40 hover:bg-gray-800/60' 
+                    : 'bg-gray-100/60 border-gray-300/40 hover:bg-white/80'
+                }`}
               >
-                {darkMode ? (
-                  <Moon size={18} className="text-gray-300 group-hover:text-white transition-colors" />
+                {isDarkMode ? (
+                  <Sun size={18} className={`transition-colors ${
+                    isDarkMode ? 'text-gray-300 group-hover:text-yellow-400' : 'text-gray-600 group-hover:text-yellow-500'
+                  }`} />
                 ) : (
-                  <Sun size={18} className="text-gray-300 group-hover:text-white transition-colors" />
+                  <Moon size={18} className={`transition-colors ${
+                    isDarkMode ? 'text-gray-300 group-hover:text-blue-400' : 'text-gray-600 group-hover:text-blue-500'
+                  }`} />
                 )}
               </button>
               
@@ -116,19 +139,25 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) =
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2.5 rounded-xl bg-white/10 border border-white/20 hover:bg-white/20 transition-all duration-300"
+              className={`md:hidden p-2.5 rounded-xl border transition-all duration-300 ${
+                isDarkMode 
+                  ? 'bg-gray-900/40 border-gray-700/40 hover:bg-gray-800/60' 
+                  : 'bg-gray-100/60 border-gray-300/40 hover:bg-white/80'
+              }`}
             >
               {isMenuOpen ? (
-                <X size={20} className="text-white" />
+                <X size={20} className={isDarkMode ? 'text-white' : 'text-gray-900'} />
               ) : (
-                <Menu size={20} className="text-white" />
+                <Menu size={20} className={isDarkMode ? 'text-white' : 'text-gray-900'} />
               )}
             </button>
           </div>
 
           {/* Mobile Menu */}
           {isMenuOpen && (
-            <div className="md:hidden border-t border-white/10 p-4">
+            <div className={`md:hidden border-t p-4 transition-all duration-300 ${
+              isDarkMode ? 'border-gray-700/30' : 'border-gray-300/30'
+            }`}>
               <nav className="space-y-2">
                 {navigationItems.map((item) => {
                   const Icon = item.icon;
@@ -143,8 +172,12 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) =
                       }}
                       className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 ${
                         isActive 
-                          ? 'bg-white/20 text-white' 
-                          : 'text-gray-300 hover:text-white hover:bg-white/10'
+                          ? isDarkMode
+                            ? 'bg-gray-800/60 text-white' 
+                            : 'bg-white/80 text-gray-900'
+                          : isDarkMode
+                            ? 'text-gray-300 hover:text-white hover:bg-gray-800/40'
+                            : 'text-gray-600 hover:text-gray-900 hover:bg-white/60'
                       }`}
                     >
                       <Icon size={18} className={isActive ? 'text-[#0070f3]' : ''} />
@@ -155,11 +188,15 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) =
                 
                 <div className="pt-4 space-y-2">
                   <button
-                    onClick={() => setDarkMode(!darkMode)}
-                    className="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-gray-300 hover:text-white hover:bg-white/20 transition-all duration-300"
+                    onClick={toggleTheme}
+                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl border transition-all duration-300 ${
+                      isDarkMode 
+                        ? 'bg-gray-900/40 border-gray-700/40 text-gray-300 hover:text-white hover:bg-gray-800/60' 
+                        : 'bg-gray-100/60 border-gray-300/40 text-gray-600 hover:text-gray-900 hover:bg-white/80'
+                    }`}
                   >
-                    {darkMode ? <Moon size={18} /> : <Sun size={18} />}
-                    <span className="font-medium">Theme</span>
+                    {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
+                    <span className="font-medium">{isDarkMode ? 'Light Mode' : 'Dark Mode'}</span>
                   </button>
                   
                   <button 

@@ -77,7 +77,7 @@ export const About: React.FC<AboutProps> = ({ currentPage, onContactClick }) => 
 
   const founders = [
     {
-      name: "Harsh Singh",
+      name: "Nitish Maurya",
       role: "Co-Founder & CEO",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
       bio: "Visionary leader passionate about making AI accessible to every business and driving innovation.",
@@ -87,7 +87,7 @@ export const About: React.FC<AboutProps> = ({ currentPage, onContactClick }) => 
       quote: "The best AI is invisible AI."
     },
     {
-      name: "Ashutosh",
+      name: "Nitish Maurya",
       role: "Co-Founder & CTO",
       image: "https://images.unsplash.com/photo-1494790108755-2616b612b550?w=400&h=400&fit=crop&crop=face",
       bio: "Full-stack architect and technical innovator who believes in building simple, powerful solutions.",

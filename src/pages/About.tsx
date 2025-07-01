@@ -77,32 +77,32 @@ export const About: React.FC<AboutProps> = ({ currentPage, onContactClick }) => 
 
   const founders = [
     {
-      name: "Alex Rivera",
+      name: "Harsh Singh",
       role: "Co-Founder & CEO",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
-      bio: "Former Google AI researcher passionate about making AI accessible to every business.",
-      education: "Stanford Computer Science",
-      experience: "8+ years in AI/ML",
+      bio: "Visionary leader passionate about making AI accessible to every business and driving innovation.",
+      education: "Computer Science Engineering",
+      experience: "5+ years in AI/ML",
       focus: "Product Strategy & AI Research",
       quote: "The best AI is invisible AI."
     },
     {
-      name: "Jordan Kim",
+      name: "Ashutosh",
       role: "Co-Founder & CTO",
       image: "https://images.unsplash.com/photo-1494790108755-2616b612b550?w=400&h=400&fit=crop&crop=face",
-      bio: "Full-stack architect who scaled systems at Meta. Believes in simple, powerful solutions.",
-      education: "UC Berkeley EECS",
-      experience: "10+ years in Infrastructure",
+      bio: "Full-stack architect and technical innovator who believes in building simple, powerful solutions.",
+      education: "Computer Science Engineering",
+      experience: "4+ years in Full-Stack Development",
       focus: "System Architecture & DevOps",
       quote: "Great technology should feel like magic."
     },
     {
-      name: "Sam Chen",
+      name: "Nitish Maurya",
       role: "Head of Product",
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
-      bio: "Design-focused product leader who creates experiences that users actually love.",
-      education: "Stanford Design Program",
-      experience: "6+ years in Product",
+      bio: "Product strategist and design thinker who creates experiences that users actually love.",
+      education: "Product Management & Design",
+      experience: "3+ years in Product Development",
       focus: "User Experience & Design",
       quote: "Good design is good business."
     }

@@ -13,6 +13,11 @@ function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const [isTransitioning, setIsTransitioning] = useState(false);
 
+  // Scroll to top when page changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentPage]);
+
   // Dynamic color themes for different pages
   const pageThemes = {
     home: {
@@ -81,9 +86,9 @@ function App() {
   const renderPage = () => {
     switch (currentPage) {
       case 'about':
-        return <About />;
+        return <About currentPage={currentPage} />;
       case 'contact':
-        return <Contact />;
+        return <Contact currentPage={currentPage} />;
       case 'services':
         return (
           <div className="pt-20">

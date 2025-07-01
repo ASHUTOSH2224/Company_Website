@@ -128,7 +128,7 @@ export const CTA: React.FC<CTAProps> = ({ onContactClick, currentPage = 'home' }
         <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-r from-purple-400/15 to-pink-400/15 rounded-full blur-2xl animate-float" style={{ animationDelay: '2s' }}></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-cyan-400/10 to-blue-400/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }}></div>
       </div>
-
+      
       {/* Animated particles */}
       <div className="absolute inset-0 overflow-hidden">
         {[...Array(20)].map((_, i) => (
@@ -152,7 +152,7 @@ export const CTA: React.FC<CTAProps> = ({ onContactClick, currentPage = 'home' }
             <Sparkles size={18} className="animate-pulse" />
             <span>Limited Time Offer</span>
           </div>
-          
+
           <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
             <span className="block">Ready to Transform</span>
             <span className={`bg-gradient-to-r ${themeColors.primary.replace('600', '400')} bg-clip-text text-transparent animate-gradient`}>
@@ -164,7 +164,7 @@ export const CTA: React.FC<CTAProps> = ({ onContactClick, currentPage = 'home' }
             Join 500+ companies that have already revolutionized their operations with our AI solutions. 
             Start your transformation journey today with a free consultation.
           </p>
-
+          
           {/* Urgency Indicators */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/20 border border-orange-400/30 text-orange-300 text-sm font-medium mb-8">
             <Clock size={16} className="animate-pulse" />
@@ -184,7 +184,7 @@ export const CTA: React.FC<CTAProps> = ({ onContactClick, currentPage = 'home' }
               </div>
             </div>
           ))}
-        </div>
+          </div>
 
         {/* Main CTA Section */}
         <div className={`bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-sm rounded-3xl p-12 border border-white/20 shadow-2xl mb-16 transform transition-all duration-1000 delay-400 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>

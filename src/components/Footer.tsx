@@ -123,14 +123,14 @@ export const Footer: React.FC<FooterProps> = ({ onContactClick, onPageChange }) 
         <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-r from-blue-200/20 to-indigo-200/20 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-r from-purple-200/15 to-pink-200/15 rounded-full blur-2xl"></div>
       </div>
-
+      
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Footer Content */}
         <div className="py-16">
           <div className="grid lg:grid-cols-4 gap-12">
             
-            {/* Company Info */}
+          {/* Company Info */}
             <div className="lg:col-span-2 space-y-8">
               {/* Logo and Description */}
               <div>
@@ -255,8 +255,8 @@ export const Footer: React.FC<FooterProps> = ({ onContactClick, onPageChange }) 
               </div>
             </div>
           </div>
-        </div>
-        
+          </div>
+
         {/* Bottom Bar */}
         <div className="border-t border-slate-200 py-8">
           <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
@@ -287,7 +287,7 @@ export const Footer: React.FC<FooterProps> = ({ onContactClick, onPageChange }) 
                             : 'text-slate-600 group-hover:text-slate-800'
                         }`}
                       />
-                    </a>
+              </a>
                   );
                 })}
               </div>
@@ -303,9 +303,9 @@ export const Footer: React.FC<FooterProps> = ({ onContactClick, onPageChange }) 
                   <a href="#" className="hover:text-slate-700 transition-colors duration-300">Terms of Service</a>
                   <span className="text-slate-300">•</span>
                   <a href="#" className="hover:text-slate-700 transition-colors duration-300">Cookies</a>
-                </div>
-              </div>
-              
+          </div>
+        </div>
+
               <div className="mt-2 flex items-center justify-center lg:justify-end gap-2 text-xs">
                 <Globe size={14} />
                 <span>Made with ❤️ in San Francisco</span>

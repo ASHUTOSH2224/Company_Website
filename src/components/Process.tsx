@@ -189,13 +189,13 @@ export const Process: React.FC<ProcessProps> = ({ onContactClick, currentPage = 
             <span className="block">From Concept to</span>
             <span className={`bg-gradient-to-r ${themeColors.primary} bg-clip-text text-transparent`}>
               AI-Powered Reality
-            </span>
-          </h2>
+              </span>
+            </h2>
           
           <p className="font-body text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
             Our proven 4-step methodology ensures your AI project is delivered on time, 
             within budget, and exceeds your expectations every step of the way.
-          </p>
+            </p>
         </div>
 
         {/* Process Steps */}
@@ -241,7 +241,7 @@ export const Process: React.FC<ProcessProps> = ({ onContactClick, currentPage = 
                         {step.title}
                       </div>
                     </div>
-                    
+
                     {/* Progress Indicator */}
                     {isActive && (
                       <div className="absolute -inset-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-3xl animate-pulse"></div>
@@ -272,7 +272,7 @@ export const Process: React.FC<ProcessProps> = ({ onContactClick, currentPage = 
                   
                   <h3 className="font-display text-3xl font-bold text-slate-900 mb-2">
                     {steps[activeStep].title}
-                  </h3>
+                    </h3>
                   
                   <p className={`text-lg font-semibold mb-4 ${steps[activeStep].color}`}>
                     {steps[activeStep].subtitle}
@@ -280,8 +280,8 @@ export const Process: React.FC<ProcessProps> = ({ onContactClick, currentPage = 
                   
                   <p className="text-slate-700 text-lg leading-relaxed mb-6">
                     {steps[activeStep].details}
-                  </p>
-                  
+                    </p>
+
                   <div className="flex items-center gap-4 mb-6">
                     <div className="flex items-center gap-2">
                       <Calendar size={20} className={steps[activeStep].color} />
@@ -369,9 +369,9 @@ export const Process: React.FC<ProcessProps> = ({ onContactClick, currentPage = 
                     <div className="flex-1 p-4 bg-slate-50 rounded-xl">
                       <div className="font-bold text-slate-900">{item.phase}</div>
                       <div className="text-slate-600">{item.activity}</div>
-                    </div>
-                  </div>
-                ))}
+                </div>
+              </div>
+            ))}
               </div>
             </div>
           </div>

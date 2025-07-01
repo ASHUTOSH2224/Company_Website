@@ -174,23 +174,37 @@ export const About: React.FC<AboutProps> = ({ currentPage, onContactClick }) => 
                   <div 
                     key={index}
                     className="relative group"
+                    style={{ animationDelay: `${index * 200}ms` }}
                   >
-                    <div className="card p-8 text-center h-full transition-all duration-300 group-hover:transform group-hover:-translate-y-2">
-                      {/* Step number */}
-                      <div className="absolute -top-3 left-6 w-6 h-6 bg-[#0070f3] rounded-full flex items-center justify-center text-white text-xs font-bold">
+                    {/* Animated background glow */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#0070f3]/10 to-[#50e3c2]/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+                    
+                    <div className="card p-8 text-center h-full transition-all duration-500 group-hover:transform group-hover:-translate-y-3 group-hover:scale-105 relative overflow-hidden">
+                      {/* Animated border effect */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-[#0070f3] via-[#50e3c2] to-[#0070f3] opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-2xl animate-gradient-shift bg-size-300"></div>
+                      
+                      {/* Timeline connector with animation */}
+                      {index < journey.length - 1 && (
+                        <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-[#333] to-transparent group-hover:from-[#0070f3] transition-all duration-500"></div>
+                      )}
+                      
+                      {/* Step number with pulse animation */}
+                      <div className="absolute -top-3 left-6 w-6 h-6 bg-[#0070f3] rounded-full flex items-center justify-center text-white text-xs font-bold group-hover:animate-pulse group-hover:scale-110 transition-transform duration-300">
                         {index + 1}
                       </div>
 
-                      <div className="w-14 h-14 bg-gradient-to-br from-[#0070f3] to-[#50e3c2] rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                        <Icon className="w-7 h-7 text-white" />
+                      {/* Icon with enhanced animations */}
+                      <div className="w-14 h-14 bg-gradient-to-br from-[#0070f3] to-[#50e3c2] rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 shadow-lg group-hover:shadow-[#0070f3]/25">
+                        <Icon className="w-7 h-7 text-white group-hover:animate-bounce" />
                       </div>
 
-                      <div className="text-sm font-medium text-[#0070f3] mb-2">{step.date}</div>
-                      <h3 className="text-lg font-semibold text-white mb-3">{step.title}</h3>
-                      <p className="text-[#888] text-sm leading-relaxed mb-4">{step.description}</p>
+                      <div className="text-sm font-medium text-[#0070f3] mb-2 group-hover:text-[#50e3c2] transition-colors duration-300">{step.date}</div>
+                      <h3 className="text-lg font-semibold text-white mb-3 group-hover:scale-105 transition-transform duration-300">{step.title}</h3>
+                      <p className="text-[#888] text-sm leading-relaxed mb-4 group-hover:text-[#aaa] transition-colors duration-300">{step.description}</p>
                       
-                      <div className="inline-flex items-center gap-2 px-3 py-1 bg-[var(--card-bg)] border border-[#333] text-[#50e3c2] text-xs font-medium rounded-full">
-                        <div className="w-1.5 h-1.5 bg-[#50e3c2] rounded-full"></div>
+                      {/* Milestone badge with animation */}
+                      <div className="inline-flex items-center gap-2 px-3 py-1 bg-[var(--card-bg)] border border-[#333] text-[#50e3c2] text-xs font-medium rounded-full group-hover:border-[#0070f3] group-hover:bg-[#0070f3]/10 transition-all duration-300">
+                        <div className="w-1.5 h-1.5 bg-[#50e3c2] rounded-full group-hover:animate-ping"></div>
                         <span>{step.milestone}</span>
                       </div>
                     </div>
@@ -211,35 +225,59 @@ export const About: React.FC<AboutProps> = ({ currentPage, onContactClick }) => 
               {founders.map((founder, index) => (
                 <div 
                   key={index}
-                  className={`card p-8 cursor-pointer transition-all duration-300 hover:transform hover:-translate-y-2 ${
-                    activeFounder === index ? 'border-[#0070f3]' : ''
+                  className={`card p-8 cursor-pointer transition-all duration-500 hover:transform hover:-translate-y-4 hover:scale-105 relative overflow-hidden group ${
+                    activeFounder === index ? 'border-[#0070f3] scale-105 shadow-2xl shadow-[#0070f3]/20' : ''
                   }`}
                   onClick={() => setActiveFounder(index)}
+                  style={{ animationDelay: `${index * 150}ms` }}
                 >
-                  <div className="text-center">
-                    <div className="w-20 h-20 mx-auto rounded-xl overflow-hidden mb-6">
-                      <img 
-                        src={founder.image} 
-                        alt={founder.name}
-                        className="w-full h-full object-cover"
-                      />
+                  {/* Animated background for active founder */}
+                  {activeFounder === index && (
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#0070f3]/5 to-[#50e3c2]/5 animate-pulse"></div>
+                  )}
+                  
+                  {/* Hover glow effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#0070f3]/10 to-[#50e3c2]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+                  
+                  <div className="text-center relative z-10">
+                    {/* Profile image with enhanced animations */}
+                    <div className="relative w-20 h-20 mx-auto mb-6 group">
+                      <div className="w-full h-full rounded-xl overflow-hidden transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
+                        <img 
+                          src={founder.image} 
+                          alt={founder.name}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                      </div>
+                      {/* Active indicator */}
+                      {activeFounder === index && (
+                        <div className="absolute -top-1 -right-1 w-6 h-6 bg-gradient-to-r from-[#0070f3] to-[#50e3c2] rounded-full flex items-center justify-center animate-pulse">
+                          <Star className="w-3 h-3 text-white" />
+                        </div>
+                      )}
+                      {/* Hover ring effect */}
+                      <div className="absolute inset-0 rounded-xl border-2 border-[#0070f3] opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"></div>
                     </div>
 
-                    <h3 className="text-xl font-semibold text-white mb-1">{founder.name}</h3>
-                    <p className="text-[#0070f3] font-medium mb-4">{founder.role}</p>
-                    <p className="text-[#888] text-sm leading-relaxed mb-6">{founder.bio}</p>
+                    <h3 className="text-xl font-semibold text-white mb-1 group-hover:text-[#50e3c2] transition-colors duration-300">{founder.name}</h3>
+                    <p className="text-[#0070f3] font-medium mb-4 group-hover:text-[#50e3c2] transition-colors duration-300">{founder.role}</p>
+                    <p className="text-[#888] text-sm leading-relaxed mb-6 group-hover:text-[#aaa] transition-colors duration-300">{founder.bio}</p>
 
+                    {/* Enhanced info badges */}
                     <div className="space-y-2 text-left">
-                      <div className="flex items-center gap-2 text-xs">
-                        <GraduationCap className="w-3 h-3 text-[#50e3c2]" />
-                        <span className="text-[#666]">{founder.education}</span>
+                      <div className="flex items-center gap-2 text-xs p-2 rounded-lg bg-[var(--card-bg)] border border-[#333] group-hover:border-[#50e3c2] group-hover:bg-[#50e3c2]/5 transition-all duration-300">
+                        <GraduationCap className="w-3 h-3 text-[#50e3c2] group-hover:animate-pulse" />
+                        <span className="text-[#666] group-hover:text-[#50e3c2] transition-colors duration-300">{founder.education}</span>
                       </div>
-                      <div className="flex items-center gap-2 text-xs">
-                        <Trophy className="w-3 h-3 text-[#0070f3]" />
-                        <span className="text-[#666]">{founder.experience}</span>
+                      <div className="flex items-center gap-2 text-xs p-2 rounded-lg bg-[var(--card-bg)] border border-[#333] group-hover:border-[#0070f3] group-hover:bg-[#0070f3]/5 transition-all duration-300">
+                        <Trophy className="w-3 h-3 text-[#0070f3] group-hover:animate-pulse" />
+                        <span className="text-[#666] group-hover:text-[#0070f3] transition-colors duration-300">{founder.experience}</span>
                       </div>
                     </div>
                   </div>
+                  
+                  {/* Click ripple effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#0070f3]/20 to-[#50e3c2]/20 opacity-0 group-active:opacity-100 transition-opacity duration-150 rounded-2xl"></div>
                 </div>
               ))}
             </div>
@@ -314,24 +352,49 @@ export const About: React.FC<AboutProps> = ({ currentPage, onContactClick }) => 
                 return (
                   <div 
                     key={index}
-                    className="card p-8 h-full transition-all duration-300 hover:transform hover:-translate-y-2"
+                    className="card p-8 h-full transition-all duration-500 hover:transform hover:-translate-y-4 hover:scale-105 relative overflow-hidden group"
                     onMouseEnter={() => setHoveredValue(index)}
                     onMouseLeave={() => setHoveredValue(null)}
+                    style={{ animationDelay: `${index * 100}ms` }}
                   >
-                    <div className="w-14 h-14 bg-gradient-to-br from-[#0070f3] to-[#50e3c2] rounded-xl flex items-center justify-center mb-6">
-                      <Icon className="w-7 h-7 text-white" />
+                    {/* Animated background glow */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#0070f3]/10 to-[#50e3c2]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+                    
+                    {/* Animated border effect */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#0070f3] via-[#50e3c2] to-[#0070f3] opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-2xl animate-gradient-shift bg-size-300"></div>
+                    
+                    <div className="relative z-10">
+                      {/* Enhanced icon with animations */}
+                      <div className="w-14 h-14 bg-gradient-to-br from-[#0070f3] to-[#50e3c2] rounded-xl flex items-center justify-center mb-6 group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 shadow-lg group-hover:shadow-[#0070f3]/25">
+                        <Icon className="w-7 h-7 text-white group-hover:animate-pulse" />
+                      </div>
+
+                      <h3 className="text-xl font-semibold text-white mb-4 group-hover:text-[#50e3c2] transition-colors duration-300 group-hover:scale-105 transform-gpu">
+                        {value.title}
+                      </h3>
+                      <p className="text-[#888] leading-relaxed group-hover:text-[#aaa] transition-colors duration-300">
+                        {value.description}
+                      </p>
+
+                      {/* Animated hover content */}
+                      <div className={`transition-all duration-500 overflow-hidden ${
+                        hoveredValue === index ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0'
+                      }`}>
+                        <div className="mt-4 pt-4 border-t border-[#333] group-hover:border-[#0070f3] transition-colors duration-300">
+                          <div className="flex items-center gap-2">
+                            <div className="w-2 h-2 bg-[#0070f3] rounded-full animate-pulse"></div>
+                            <div className="text-xs text-[#0070f3] font-medium animate-fade-in">Core Principle</div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-
-                    <h3 className="text-xl font-semibold text-white mb-4">
-                      {value.title}
-                    </h3>
-                    <p className="text-[#888] leading-relaxed">
-                      {value.description}
-                    </p>
-
+                    
+                    {/* Floating particles effect */}
                     {hoveredValue === index && (
-                      <div className="mt-4 pt-4 border-t border-[#333]">
-                        <div className="text-xs text-[#0070f3] font-medium">Core Principle</div>
+                      <div className="absolute inset-0 pointer-events-none">
+                        <div className="absolute top-4 left-4 w-1 h-1 bg-[#0070f3] rounded-full animate-ping" style={{ animationDelay: '0ms' }}></div>
+                        <div className="absolute top-8 right-6 w-1 h-1 bg-[#50e3c2] rounded-full animate-ping" style={{ animationDelay: '200ms' }}></div>
+                        <div className="absolute bottom-6 left-8 w-1 h-1 bg-[#0070f3] rounded-full animate-ping" style={{ animationDelay: '400ms' }}></div>
                       </div>
                     )}
                   </div>
@@ -354,15 +417,41 @@ export const About: React.FC<AboutProps> = ({ currentPage, onContactClick }) => 
                   return (
                     <div 
                       key={index}
-                      className="text-center group"
+                      className="text-center group cursor-pointer"
+                      style={{ animationDelay: `${index * 150}ms` }}
                     >
-                      <div className="w-14 h-14 bg-gradient-to-br from-[#0070f3] to-[#50e3c2] rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                        <Icon className="w-7 h-7 text-white" />
+                      {/* Icon with enhanced animations */}
+                      <div className="relative w-14 h-14 mx-auto mb-4">
+                        {/* Pulsing background effect */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-[#0070f3] to-[#50e3c2] rounded-xl opacity-20 group-hover:opacity-40 transition-opacity duration-500 animate-pulse"></div>
+                        
+                        {/* Main icon container */}
+                        <div className="relative w-full h-full bg-gradient-to-br from-[#0070f3] to-[#50e3c2] rounded-xl flex items-center justify-center group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 shadow-lg group-hover:shadow-[#0070f3]/25">
+                          <Icon className="w-7 h-7 text-white group-hover:animate-bounce" />
+                        </div>
+                        
+                        {/* Floating ring effect */}
+                        <div className="absolute inset-0 border-2 border-[#0070f3] rounded-xl opacity-0 group-hover:opacity-100 group-hover:scale-150 transition-all duration-700 animate-ping"></div>
                       </div>
-                      <div className={`text-3xl font-bold gradient-text-accent mb-2`}>
-                        {stat.value}
+                      
+                      {/* Animated stat value */}
+                      <div className="relative">
+                        <div className={`text-3xl font-bold gradient-text-accent mb-2 group-hover:scale-110 transition-transform duration-300`}>
+                          {stat.value}
+                        </div>
+                        
+                        {/* Underline animation */}
+                        <div className="w-0 h-0.5 bg-gradient-to-r from-[#0070f3] to-[#50e3c2] mx-auto group-hover:w-full transition-all duration-500"></div>
                       </div>
-                      <div className="text-[#888] text-sm font-medium">{stat.label}</div>
+                      
+                      <div className="text-[#888] text-sm font-medium group-hover:text-[#aaa] transition-colors duration-300">{stat.label}</div>
+                      
+                      {/* Hover particles */}
+                      <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <div className="absolute top-0 left-1/4 w-1 h-1 bg-[#0070f3] rounded-full animate-ping" style={{ animationDelay: '0ms' }}></div>
+                        <div className="absolute top-2 right-1/4 w-1 h-1 bg-[#50e3c2] rounded-full animate-ping" style={{ animationDelay: '200ms' }}></div>
+                        <div className="absolute bottom-4 left-1/3 w-1 h-1 bg-[#0070f3] rounded-full animate-ping" style={{ animationDelay: '400ms' }}></div>
+                      </div>
                     </div>
                   );
                 })}

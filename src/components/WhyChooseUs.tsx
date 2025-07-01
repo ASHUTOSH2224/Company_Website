@@ -144,67 +144,156 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ onContactClick, curren
           </p>
         </div>
 
-        {/* Stats Grid */}
+        {/* Enhanced Stats Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
           {stats.map((stat, index) => (
             <div 
               key={index}
-              className={`text-center transform transition-all duration-500 ${
+              className={`text-center group transform transition-all duration-700 hover:scale-110 ${
                 isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
               }`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className="card p-6 text-center">
-                <stat.icon className={`w-8 h-8 mx-auto mb-4 ${stat.color}`} />
-                <div className="text-3xl font-bold text-white mb-2">{stat.number}</div>
-                <div className="text-sm font-medium text-white mb-1">{stat.label}</div>
-                <div className="text-xs text-[#888]">{stat.description}</div>
+              <div className="card p-6 text-center relative overflow-hidden group-hover:transform group-hover:-translate-y-2 transition-all duration-500">
+                {/* Animated background glow */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#0070f3]/5 to-[#50e3c2]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+                
+                {/* Enhanced icon with animations */}
+                <div className="relative w-8 h-8 mx-auto mb-4">
+                  {/* Pulsing background effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#0070f3] to-[#50e3c2] opacity-20 rounded-lg group-hover:opacity-40 transition-opacity duration-500 animate-pulse"></div>
+                  
+                  {/* Main icon */}
+                  <stat.icon className={`relative w-8 h-8 ${stat.color} group-hover:animate-bounce group-hover:scale-110 transition-transform duration-300`} />
+                  
+                  {/* Floating ring effect */}
+                  <div className="absolute inset-0 border-2 border-[#0070f3] rounded-lg opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all duration-700 animate-ping"></div>
+                </div>
+                
+                {/* Animated stat value */}
+                <div className="relative">
+                  <div className="text-3xl font-bold text-white mb-2 group-hover:scale-110 transition-transform duration-300 group-hover:text-[#50e3c2]">{stat.number}</div>
+                  
+                  {/* Underline animation */}
+                  <div className="w-0 h-0.5 bg-gradient-to-r from-[#0070f3] to-[#50e3c2] mx-auto group-hover:w-full transition-all duration-500"></div>
+                </div>
+                
+                <div className="text-sm font-medium text-white mb-1 group-hover:text-[#aaa] transition-colors duration-300">{stat.label}</div>
+                <div className="text-xs text-[#888] group-hover:text-[#aaa] transition-colors duration-300">{stat.description}</div>
+                
+                {/* Hover particles */}
+                <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <div className="absolute top-2 left-2 w-1 h-1 bg-[#0070f3] rounded-full animate-ping" style={{ animationDelay: '0ms' }}></div>
+                  <div className="absolute top-4 right-3 w-1 h-1 bg-[#50e3c2] rounded-full animate-ping" style={{ animationDelay: '200ms' }}></div>
+                  <div className="absolute bottom-3 left-4 w-1 h-1 bg-[#0070f3] rounded-full animate-ping" style={{ animationDelay: '400ms' }}></div>
+                </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Features Grid */}
+        {/* Enhanced Features Grid */}
         <div className="grid lg:grid-cols-2 gap-8 mb-20">
           {features.map((feature, index) => (
             <div 
               key={index}
-              className={`service-card cursor-pointer ${
-                activeFeature === index ? 'border-[#0070f3]' : ''
+              className={`service-card group cursor-pointer relative overflow-hidden transition-all duration-500 hover:transform hover:-translate-y-2 hover:scale-105 ${
+                activeFeature === index ? 'border-[#0070f3] scale-105 shadow-2xl shadow-[#0070f3]/20' : ''
               }`}
               onClick={() => setActiveFeature(index)}
+              style={{ animationDelay: `${index * 150}ms` }}
             >
-              <div className="flex items-start gap-4">
-                <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${feature.gradient} flex items-center justify-center flex-shrink-0`}>
-                  <feature.icon className="w-6 h-6 text-white" />
+              {/* Animated background glow */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[#0070f3]/5 to-[#50e3c2]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+              
+              {/* Animated border effect */}
+              <div className={`absolute inset-0 bg-gradient-to-r ${feature.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-lg animate-gradient-shift bg-size-300`}></div>
+              
+              {/* Active feature pulse animation */}
+              {activeFeature === index && (
+                <div className="absolute inset-0 bg-gradient-to-br from-[#0070f3]/5 to-[#50e3c2]/5 animate-pulse rounded-lg"></div>
+              )}
+              
+              <div className="relative z-10">
+                <div className="flex items-start gap-4">
+                  {/* Enhanced feature icon */}
+                  <div className="relative flex-shrink-0">
+                    {/* Pulsing background effect */}
+                    <div className={`absolute inset-0 bg-gradient-to-r ${feature.gradient} opacity-20 rounded-lg group-hover:opacity-40 transition-opacity duration-500 animate-pulse w-12 h-12`}></div>
+                    
+                    {/* Main icon container */}
+                    <div className={`relative w-12 h-12 rounded-lg bg-gradient-to-r ${feature.gradient} flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg group-hover:shadow-[#0070f3]/25 ${
+                      activeFeature === index ? 'animate-bounce' : ''
+                    }`}>
+                      <feature.icon className="w-6 h-6 text-white group-hover:animate-pulse" />
+                    </div>
+                    
+                    {/* Floating ring effect */}
+                    <div className="absolute inset-0 border-2 border-[#0070f3] rounded-lg opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all duration-700 animate-ping w-12 h-12"></div>
+                  </div>
+                  
+                  <div className="flex-1">
+                    <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-[#50e3c2] transition-colors duration-300 group-hover:scale-105 transform-gpu">{feature.title}</h3>
+                    <p className="text-[#888] text-sm leading-relaxed mb-3 group-hover:text-[#aaa] transition-colors duration-300">{feature.description}</p>
+                    <p className="text-[#666] text-xs leading-relaxed group-hover:text-[#888] transition-colors duration-300">{feature.details}</p>
+                  </div>
                 </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-white mb-2">{feature.title}</h3>
-                  <p className="text-[#888] text-sm leading-relaxed mb-3">{feature.description}</p>
-                  <p className="text-[#666] text-xs leading-relaxed">{feature.details}</p>
-                </div>
+              </div>
+              
+              {/* Hover particles */}
+              <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className="absolute top-4 left-4 w-1 h-1 bg-[#0070f3] rounded-full animate-ping" style={{ animationDelay: '0ms' }}></div>
+                <div className="absolute top-8 right-6 w-1 h-1 bg-[#50e3c2] rounded-full animate-ping" style={{ animationDelay: '200ms' }}></div>
+                <div className="absolute bottom-6 left-8 w-1 h-1 bg-[#0070f3] rounded-full animate-ping" style={{ animationDelay: '400ms' }}></div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Benefits Section */}
+        {/* Enhanced Benefits Section */}
         <div className="text-center mb-12">
           <h3 className="heading-md text-white mb-12">What You Get</h3>
           <div className="grid md:grid-cols-3 gap-8">
             {benefits.map((benefit, index) => (
               <div 
                 key={index}
-                className={`card p-6 text-center transform transition-all duration-500 ${
+                className={`card p-6 text-center group relative overflow-hidden transform transition-all duration-700 hover:scale-110 hover:-translate-y-4 ${
                   isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
                 }`}
                 style={{ transitionDelay: `${(index + 4) * 100}ms` }}
               >
-                <div className="w-16 h-16 bg-gradient-to-r from-[#0070f3] to-[#50e3c2] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <benefit.icon className="w-8 h-8 text-white" />
+                {/* Animated background glow */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#0070f3]/5 to-[#50e3c2]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+                
+                {/* Shimmer effect */}
+                <div className="absolute inset-0 shimmer-effect opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                <div className="relative z-10">
+                  {/* Enhanced icon with animations */}
+                  <div className="relative w-16 h-16 mx-auto mb-4">
+                    {/* Pulsing background effect */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#0070f3] to-[#50e3c2] opacity-20 rounded-full group-hover:opacity-40 transition-opacity duration-500 animate-pulse"></div>
+                    
+                    {/* Main icon container */}
+                    <div className="relative w-full h-full bg-gradient-to-r from-[#0070f3] to-[#50e3c2] rounded-full flex items-center justify-center group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 shadow-lg group-hover:shadow-[#0070f3]/25">
+                      <benefit.icon className="w-8 h-8 text-white group-hover:animate-bounce" />
+                    </div>
+                    
+                    {/* Floating ring effect */}
+                    <div className="absolute inset-0 border-2 border-[#0070f3] rounded-full opacity-0 group-hover:opacity-100 group-hover:scale-150 transition-all duration-700 animate-ping"></div>
+                  </div>
+                  
+                  <h4 className="text-lg font-semibold text-white mb-3 group-hover:text-[#50e3c2] transition-colors duration-300 group-hover:scale-105 transform-gpu">{benefit.title}</h4>
+                  <p className="text-[#888] text-sm leading-relaxed group-hover:text-[#aaa] transition-colors duration-300">{benefit.description}</p>
                 </div>
-                <h4 className="text-lg font-semibold text-white mb-3">{benefit.title}</h4>
-                <p className="text-[#888] text-sm leading-relaxed">{benefit.description}</p>
+                
+                {/* Hover particles */}
+                <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <div className="absolute top-4 left-4 w-1 h-1 bg-[#0070f3] rounded-full animate-ping" style={{ animationDelay: '0ms' }}></div>
+                  <div className="absolute top-8 right-6 w-1 h-1 bg-[#50e3c2] rounded-full animate-ping" style={{ animationDelay: '200ms' }}></div>
+                  <div className="absolute bottom-6 left-8 w-1 h-1 bg-[#0070f3] rounded-full animate-ping" style={{ animationDelay: '400ms' }}></div>
+                  <div className="absolute bottom-8 right-4 w-1 h-1 bg-[#50e3c2] rounded-full animate-ping" style={{ animationDelay: '600ms' }}></div>
+                </div>
               </div>
             ))}
           </div>

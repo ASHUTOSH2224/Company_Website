@@ -138,45 +138,83 @@ export const Process: React.FC<ProcessProps> = ({ onContactClick, currentPage = 
           {steps.map((step, index) => (
             <div 
               key={index}
-              className={`relative transform transition-all duration-500 ${
+              className={`relative group transform transition-all duration-700 hover:scale-105 ${
                 isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
               }`}
               style={{ transitionDelay: `${index * 200}ms` }}
             >
-              <div className={`service-card ${activeStep === index ? 'border-[#0070f3]' : ''}`}>
-                <div className="grid lg:grid-cols-12 gap-6 items-center">
-                  {/* Step Number & Icon */}
-                  <div className="lg:col-span-2 text-center lg:text-left">
-                    <div className="relative mb-4">
-                      <div className={`w-16 h-16 rounded-lg bg-gradient-to-r ${step.gradient} flex items-center justify-center mx-auto lg:mx-0`}>
-                        <step.icon className="w-8 h-8 text-white" />
+              {/* Animated background glow */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[#0070f3]/5 to-[#50e3c2]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl rounded-lg"></div>
+              
+              <div className={`service-card relative overflow-hidden ${
+                activeStep === index ? 'border-[#0070f3] scale-105 shadow-2xl shadow-[#0070f3]/20' : ''
+              } group-hover:border-[#50e3c2] group-hover:transform group-hover:-translate-y-2`}>
+                {/* Animated border effect */}
+                <div className={`absolute inset-0 bg-gradient-to-r ${step.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-lg animate-gradient-shift bg-size-300`}></div>
+                
+                {/* Active step pulse animation */}
+                {activeStep === index && (
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#0070f3]/5 to-[#50e3c2]/5 animate-pulse rounded-lg"></div>
+                )}
+                
+                <div className="relative z-10">
+                  <div className="grid lg:grid-cols-12 gap-6 items-center">
+                    {/* Enhanced Step Number & Icon */}
+                    <div className="lg:col-span-2 text-center lg:text-left">
+                      <div className="relative mb-4 group/icon">
+                        {/* Pulsing background effect */}
+                        <div className={`absolute inset-0 bg-gradient-to-r ${step.gradient} opacity-20 rounded-lg group-hover:opacity-40 transition-opacity duration-500 animate-pulse w-16 h-16 mx-auto lg:mx-0`}></div>
+                        
+                        {/* Main icon container */}
+                        <div className={`relative w-16 h-16 rounded-lg bg-gradient-to-r ${step.gradient} flex items-center justify-center mx-auto lg:mx-0 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg group-hover:shadow-[#0070f3]/25`}>
+                          <step.icon className="w-8 h-8 text-white group-hover:animate-bounce" />
+                        </div>
+                        
+                        {/* Enhanced step number */}
+                        <div className={`absolute -top-2 -right-2 w-6 h-6 bg-[#0070f3] rounded-full flex items-center justify-center text-white text-xs font-bold group-hover:scale-125 transition-transform duration-300 ${
+                          activeStep === index ? 'animate-pulse' : ''
+                        }`}>
+                          {index + 1}
+                        </div>
+                        
+                        {/* Floating ring effect */}
+                        <div className="absolute inset-0 border-2 border-[#0070f3] rounded-lg opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all duration-700 animate-ping w-16 h-16 mx-auto lg:mx-0"></div>
                       </div>
-                      <div className="absolute -top-2 -right-2 w-6 h-6 bg-[#0070f3] rounded-full flex items-center justify-center text-white text-xs font-bold">
-                        {index + 1}
+                      <div className="text-sm text-[#888] font-medium group-hover:text-[#50e3c2] transition-colors duration-300">{step.duration}</div>
+                    </div>
+
+                    {/* Enhanced Content */}
+                    <div className="lg:col-span-7">
+                      <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-[#50e3c2] transition-colors duration-300 group-hover:scale-105 transform-gpu">{step.title}</h3>
+                      <p className="text-[#50e3c2] text-sm font-medium mb-3 group-hover:text-[#0070f3] transition-colors duration-300">{step.subtitle}</p>
+                      <p className="text-[#888] text-sm leading-relaxed mb-4 group-hover:text-[#aaa] transition-colors duration-300">{step.description}</p>
+                      <p className="text-[#666] text-xs leading-relaxed group-hover:text-[#888] transition-colors duration-300">{step.details}</p>
+                    </div>
+
+                    {/* Enhanced Deliverables */}
+                    <div className="lg:col-span-3">
+                      <h4 className="text-sm font-medium text-white mb-3 group-hover:text-[#50e3c2] transition-colors duration-300">Deliverables:</h4>
+                      <div className="space-y-2">
+                        {step.deliverables.map((deliverable, idx) => (
+                          <div 
+                            key={idx} 
+                            className="text-xs text-[#888] group-hover:text-[#aaa] transition-all duration-300 hover:translate-x-2 flex items-center gap-2"
+                            style={{ animationDelay: `${idx * 100}ms` }}
+                          >
+                            <div className="w-1 h-1 bg-[#0070f3] rounded-full group-hover:animate-ping"></div>
+                            {deliverable}
+                          </div>
+                        ))}
                       </div>
                     </div>
-                    <div className="text-sm text-[#888] font-medium">{step.duration}</div>
                   </div>
-
-                  {/* Content */}
-                  <div className="lg:col-span-7">
-                    <h3 className="text-xl font-semibold text-white mb-2">{step.title}</h3>
-                    <p className="text-[#50e3c2] text-sm font-medium mb-3">{step.subtitle}</p>
-                    <p className="text-[#888] text-sm leading-relaxed mb-4">{step.description}</p>
-                    <p className="text-[#666] text-xs leading-relaxed">{step.details}</p>
-                  </div>
-
-                                     {/* Deliverables */}
-                   <div className="lg:col-span-3">
-                     <h4 className="text-sm font-medium text-white mb-3">Deliverables:</h4>
-                     <div className="space-y-2">
-                       {step.deliverables.map((deliverable, idx) => (
-                         <div key={idx} className="text-xs text-[#888]">
-                           • {deliverable}
-                         </div>
-                       ))}
-                     </div>
-                   </div>
+                </div>
+                
+                {/* Hover particles */}
+                <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <div className="absolute top-4 left-4 w-1 h-1 bg-[#0070f3] rounded-full animate-ping" style={{ animationDelay: '0ms' }}></div>
+                  <div className="absolute top-8 right-6 w-1 h-1 bg-[#50e3c2] rounded-full animate-ping" style={{ animationDelay: '200ms' }}></div>
+                  <div className="absolute bottom-6 left-8 w-1 h-1 bg-[#0070f3] rounded-full animate-ping" style={{ animationDelay: '400ms' }}></div>
                 </div>
               </div>
 

@@ -97,15 +97,35 @@ export const CTA: React.FC<CTAProps> = ({ onContactClick, currentPage = 'home' }
           </p>
         </div>
 
-        {/* Stats Section */}
+        {/* Enhanced Stats Section */}
         <div className={`grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16 transform transition-all duration-1000 delay-200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
           {stats.map((stat, index) => (
-            <div key={index} className="text-center">
-              <div className="card p-6">
-                <div className="text-3xl lg:text-4xl font-bold text-white mb-2">
-                  {stat.value}
+            <div 
+              key={index} 
+              className="text-center group"
+              style={{ animationDelay: `${index * 150}ms` }}
+            >
+              <div className="card p-6 relative overflow-hidden group-hover:transform group-hover:-translate-y-2 group-hover:scale-105 transition-all duration-500">
+                {/* Animated background glow */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#0070f3]/5 to-[#50e3c2]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+                
+                <div className="relative z-10">
+                  <div className="text-3xl lg:text-4xl font-bold text-white mb-2 group-hover:scale-110 transition-transform duration-300 group-hover:text-[#50e3c2]">
+                    {stat.value}
+                  </div>
+                  
+                  {/* Underline animation */}
+                  <div className="w-0 h-0.5 bg-gradient-to-r from-[#0070f3] to-[#50e3c2] mx-auto group-hover:w-full transition-all duration-500 mb-2"></div>
+                  
+                  <div className="text-[#888] text-sm font-medium group-hover:text-[#aaa] transition-colors duration-300">{stat.label}</div>
                 </div>
-                <div className="text-[#888] text-sm font-medium">{stat.label}</div>
+                
+                {/* Hover particles */}
+                <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <div className="absolute top-2 left-2 w-1 h-1 bg-[#0070f3] rounded-full animate-ping" style={{ animationDelay: '0ms' }}></div>
+                  <div className="absolute top-4 right-3 w-1 h-1 bg-[#50e3c2] rounded-full animate-ping" style={{ animationDelay: '200ms' }}></div>
+                  <div className="absolute bottom-3 left-4 w-1 h-1 bg-[#0070f3] rounded-full animate-ping" style={{ animationDelay: '400ms' }}></div>
+                </div>
               </div>
             </div>
           ))}
@@ -165,25 +185,58 @@ export const CTA: React.FC<CTAProps> = ({ onContactClick, currentPage = 'home' }
                 return (
                   <div
                     key={index}
-                    className={`p-6 rounded-lg border border-[#333] transition-all duration-300 cursor-pointer hover:border-[#666] ${
-                      isHovered ? 'border-[#0070f3]' : ''
+                    className={`p-6 rounded-lg border border-[#333] group relative overflow-hidden transition-all duration-500 cursor-pointer hover:border-[#666] hover:transform hover:-translate-y-2 hover:scale-105 ${
+                      isHovered ? 'border-[#0070f3] scale-105 shadow-2xl shadow-[#0070f3]/20' : ''
                     }`}
                     onMouseEnter={() => setHoveredBenefit(index)}
                     onMouseLeave={() => setHoveredBenefit(null)}
+                    style={{ animationDelay: `${index * 150}ms` }}
                   >
-                    <div className="flex items-start gap-4">
-                      <div className={`w-12 h-12 bg-gradient-to-r ${benefit.gradient} rounded-lg flex items-center justify-center flex-shrink-0`}>
-                        <Icon className="w-6 h-6 text-white" />
+                    {/* Animated background glow */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#0070f3]/5 to-[#50e3c2]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
+                    
+                    {/* Animated border effect */}
+                    <div className={`absolute inset-0 bg-gradient-to-r ${benefit.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-lg animate-gradient-shift bg-size-300`}></div>
+                    
+                    {/* Active benefit pulse animation */}
+                    {isHovered && (
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#0070f3]/5 to-[#50e3c2]/5 animate-pulse rounded-lg"></div>
+                    )}
+                    
+                    <div className="relative z-10">
+                      <div className="flex items-start gap-4">
+                        {/* Enhanced benefit icon */}
+                        <div className="relative flex-shrink-0">
+                          {/* Pulsing background effect */}
+                          <div className={`absolute inset-0 bg-gradient-to-r ${benefit.gradient} opacity-20 rounded-lg group-hover:opacity-40 transition-opacity duration-500 animate-pulse w-12 h-12`}></div>
+                          
+                          {/* Main icon container */}
+                          <div className={`relative w-12 h-12 bg-gradient-to-r ${benefit.gradient} rounded-lg flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg group-hover:shadow-[#0070f3]/25 ${
+                            isHovered ? 'animate-bounce' : ''
+                          }`}>
+                            <Icon className="w-6 h-6 text-white group-hover:animate-pulse" />
+                          </div>
+                          
+                          {/* Floating ring effect */}
+                          <div className="absolute inset-0 border-2 border-[#0070f3] rounded-lg opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all duration-700 animate-ping w-12 h-12"></div>
+                        </div>
+                        
+                        <div>
+                          <h5 className="text-lg font-semibold text-white mb-2 group-hover:text-[#50e3c2] transition-colors duration-300 group-hover:scale-105 transform-gpu">
+                            {benefit.title}
+                          </h5>
+                          <p className="text-[#888] text-sm leading-relaxed group-hover:text-[#aaa] transition-colors duration-300">
+                            {benefit.description}
+                          </p>
+                        </div>
                       </div>
-                      
-                      <div>
-                        <h5 className="text-lg font-semibold text-white mb-2">
-                          {benefit.title}
-                        </h5>
-                        <p className="text-[#888] text-sm leading-relaxed">
-                          {benefit.description}
-                        </p>
-                      </div>
+                    </div>
+                    
+                    {/* Hover particles */}
+                    <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      <div className="absolute top-4 left-4 w-1 h-1 bg-[#0070f3] rounded-full animate-ping" style={{ animationDelay: '0ms' }}></div>
+                      <div className="absolute top-8 right-6 w-1 h-1 bg-[#50e3c2] rounded-full animate-ping" style={{ animationDelay: '200ms' }}></div>
+                      <div className="absolute bottom-6 left-8 w-1 h-1 bg-[#0070f3] rounded-full animate-ping" style={{ animationDelay: '400ms' }}></div>
                     </div>
                   </div>
                 );

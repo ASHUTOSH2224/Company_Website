@@ -53,6 +53,10 @@ function App() {
     }, 200);
   };
 
+  const handleContactClick = () => {
+    setCurrentPage('contact');
+  };
+
   useEffect(() => {
     // Add CSS custom properties for dynamic theming
     const root = document.documentElement;
@@ -83,21 +87,21 @@ function App() {
       case 'services':
         return (
           <div className="pt-20">
-            <Services />
-            <WhyChooseUs />
-            <Process />
-            <CTA />
+            <Services onContactClick={handleContactClick} currentPage={currentPage} />
+            <WhyChooseUs onContactClick={handleContactClick} currentPage={currentPage} />
+            <Process onContactClick={handleContactClick} currentPage={currentPage} />
+            <CTA onContactClick={handleContactClick} currentPage={currentPage} />
           </div>
         );
       default:
         return (
-          <main>
-            <Hero />
-            <Services />
-            <WhyChooseUs />
-            <Process />
-            <CTA />
-          </main>
+          <>
+            <Hero onContactClick={handleContactClick} />
+            <Services onContactClick={handleContactClick} currentPage={currentPage} />
+            <WhyChooseUs onContactClick={handleContactClick} currentPage={currentPage} />
+            <Process onContactClick={handleContactClick} currentPage={currentPage} />
+            <CTA onContactClick={handleContactClick} currentPage={currentPage} />
+          </>
         );
     }
   };
@@ -123,7 +127,7 @@ function App() {
         {renderPage()}
       </div>
       
-      <Footer />
+      <Footer onContactClick={handleContactClick} onPageChange={handlePageChange} />
     </div>
   );
 }

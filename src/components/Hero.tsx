@@ -1,7 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ChevronRight, Play, CheckCircle, Users, Trophy, Zap, ArrowDown, Sparkles, BarChart3 } from 'lucide-react';
+import { ChevronRight, Play, CheckCircle, Users, Trophy, Zap, Sparkles, BarChart3, ArrowDown } from 'lucide-react';
 
-export const Hero: React.FC = () => {
+interface HeroProps {
+  onContactClick?: () => void;
+}
+
+export const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
   const heroRef = useRef<HTMLDivElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
@@ -148,7 +152,10 @@ export const Hero: React.FC = () => {
             
             {/* Enhanced CTA buttons with hover effects */}
             <div className={`flex flex-col sm:flex-row items-start gap-6 pt-8 transform transition-all duration-1000 delay-1200 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-              <button className="group bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-10 py-5 rounded-2xl text-lg font-bold hover-lift flex items-center gap-4 shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 relative overflow-hidden">
+              <button 
+                onClick={onContactClick}
+                className="group bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-10 py-5 rounded-2xl text-lg font-bold hover-lift flex items-center gap-4 shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 relative overflow-hidden"
+              >
                 <span className="relative z-10">Schedule Free Consultation</span>
                 <ChevronRight size={22} className="group-hover:translate-x-2 transition-transform duration-300 relative z-10" />
                 <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

@@ -10,6 +10,7 @@ import { Contact } from './pages/Contact';
 import OurWork from './pages/OurWork';
 import Company from './pages/Company';
 import ServiceDetails from './pages/ServiceDetails';
+import CaseStudies from './pages/CaseStudies';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -33,6 +34,14 @@ function App() {
     setCurrentPage('services');
   };
 
+  const handleViewCaseStudies = () => {
+    setCurrentPage('case-studies');
+  };
+
+  const handleBackToHome = () => {
+    setCurrentPage('home');
+  };
+
   const renderPage = () => {
     switch (currentPage) {
       case 'about':
@@ -46,7 +55,7 @@ function App() {
       case 'services':
         return (
           <div>
-            <Services onContactClick={handleContactClick} onServiceLearnMore={handleServiceLearnMore} />
+            <Services onContactClick={handleContactClick} onServiceLearnMore={handleServiceLearnMore} onViewCaseStudies={handleViewCaseStudies} />
             <WhyChooseUs onContactClick={handleContactClick} />
           </div>
         );
@@ -59,12 +68,20 @@ function App() {
             onBack={handleBackToServices}
           />
         );
+      case 'case-studies':
+        return (
+          <CaseStudies 
+            currentPage={currentPage}
+            onContactClick={handleContactClick}
+            onBack={handleBackToHome}
+          />
+        );
       default:
         return (
           <>
             <Hero onContactClick={handleContactClick} />
             <WhatWeBuild onContactClick={handleContactClick} />
-            <Services onContactClick={handleContactClick} onServiceLearnMore={handleServiceLearnMore} />
+            <Services onContactClick={handleContactClick} onServiceLearnMore={handleServiceLearnMore} onViewCaseStudies={handleViewCaseStudies} />
             <WhyChooseUs onContactClick={handleContactClick} />
           </>
         );

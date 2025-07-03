@@ -28,9 +28,10 @@ import {
 interface ServicesProps {
   onContactClick?: () => void;
   onServiceLearnMore?: (serviceId: string) => void;
+  onViewCaseStudies?: () => void;
 }
 
-export const Services: React.FC<ServicesProps> = ({ onContactClick, onServiceLearnMore }) => {
+export const Services: React.FC<ServicesProps> = ({ onContactClick, onServiceLearnMore, onViewCaseStudies }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredService, setHoveredService] = useState<number | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -653,7 +654,10 @@ const services = [
                   Start Your AI Journey
                   <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </button>
-                <button className="border-2 border-[#333] text-white px-10 lg:px-12 py-4 lg:py-5 rounded-2xl text-lg lg:text-xl font-semibold hover:border-[#0070f3] hover:bg-[#0070f3]/10 transition-all duration-300 inline-flex items-center gap-3">
+                <button 
+                  onClick={onViewCaseStudies}
+                  className="border-2 border-[#333] text-white px-10 lg:px-12 py-4 lg:py-5 rounded-2xl text-lg lg:text-xl font-semibold hover:border-[#0070f3] hover:bg-[#0070f3]/10 transition-all duration-300 inline-flex items-center gap-3"
+                >
                   View Case Studies
                   <TrendingUp size={20} />
                 </button>

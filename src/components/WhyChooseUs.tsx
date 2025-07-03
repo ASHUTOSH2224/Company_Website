@@ -136,13 +136,13 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ onContactClick, curren
           <h2 className="heading-lg mb-6">
             <span className="block text-white">Why Choose</span>
             <span className="gradient-text-accent">Upstraiq</span>
-          </h2>
+            </h2>
           
           <p className="text-body max-w-3xl mx-auto">
             We combine deep technical expertise with a commitment to delivering results that matter.
             Here's what sets us apart from the competition.
-          </p>
-        </div>
+            </p>
+          </div>
 
         {/* Enhanced Stats Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
@@ -195,7 +195,7 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ onContactClick, curren
         {/* Enhanced Features Grid */}
         <div className="grid lg:grid-cols-2 gap-8 mb-20">
           {features.map((feature, index) => (
-            <div 
+            <div
               key={index}
               className={`service-card group cursor-pointer relative overflow-hidden transition-all duration-500 hover:transform hover:-translate-y-2 hover:scale-105 ${
                 activeFeature === index ? 'border-[#0070f3] scale-105 shadow-2xl shadow-[#0070f3]/20' : ''

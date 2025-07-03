@@ -129,7 +129,7 @@ export const CTA: React.FC<CTAProps> = ({ onContactClick, currentPage = 'home' }
               </div>
             </div>
           ))}
-        </div>
+          </div>
 
         {/* Main CTA Section */}
         <div className={`card p-12 mb-16 transform transition-all duration-1000 delay-400 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>

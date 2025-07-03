@@ -125,17 +125,17 @@ export const Process: React.FC<ProcessProps> = ({ onContactClick, currentPage = 
           <h2 className="heading-lg mb-6">
             <span className="block text-white">Our Development</span>
             <span className="gradient-text-accent">Process</span>
-          </h2>
+            </h2>
           
           <p className="text-body max-w-3xl mx-auto">
             Our proven 4-step methodology ensures your AI project is delivered on time, 
             within budget, and exceeds your expectations every step of the way.
-          </p>
+            </p>
         </div>
 
         {/* Process Steps */}
         <div className="grid gap-8 mb-20">
-          {steps.map((step, index) => (
+            {steps.map((step, index) => (
             <div 
               key={index}
               className={`relative group transform transition-all duration-700 hover:scale-105 ${
@@ -168,13 +168,13 @@ export const Process: React.FC<ProcessProps> = ({ onContactClick, currentPage = 
                         {/* Main icon container */}
                         <div className={`relative w-16 h-16 rounded-lg bg-gradient-to-r ${step.gradient} flex items-center justify-center mx-auto lg:mx-0 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg group-hover:shadow-[#0070f3]/25`}>
                           <step.icon className="w-8 h-8 text-white group-hover:animate-bounce" />
-                        </div>
-                        
-                        {/* Enhanced step number */}
+                    </div>
+                    
+                    {/* Enhanced step number */}
                         <div className={`absolute -top-2 -right-2 w-6 h-6 bg-[#0070f3] rounded-full flex items-center justify-center text-white text-xs font-bold group-hover:scale-125 transition-transform duration-300 ${
                           activeStep === index ? 'animate-pulse' : ''
                         }`}>
-                          {index + 1}
+                      {index + 1}
                         </div>
                         
                         {/* Floating ring effect */}
@@ -189,8 +189,8 @@ export const Process: React.FC<ProcessProps> = ({ onContactClick, currentPage = 
                       <p className="text-[#50e3c2] text-sm font-medium mb-3 group-hover:text-[#0070f3] transition-colors duration-300">{step.subtitle}</p>
                       <p className="text-[#888] text-sm leading-relaxed mb-4 group-hover:text-[#aaa] transition-colors duration-300">{step.description}</p>
                       <p className="text-[#666] text-xs leading-relaxed group-hover:text-[#888] transition-colors duration-300">{step.details}</p>
-                    </div>
-
+                  </div>
+                  
                     {/* Enhanced Deliverables */}
                     <div className="lg:col-span-3">
                       <h4 className="text-sm font-medium text-white mb-3 group-hover:text-[#50e3c2] transition-colors duration-300">Deliverables:</h4>

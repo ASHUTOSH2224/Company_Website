@@ -122,12 +122,13 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) =
 
             {/* Right Side Actions */}
             <div className="hidden md:flex items-center gap-3">
-              {/* CTA Button */}
+              {/* Contact Us Button */}
               <button 
                 onClick={() => setCurrentPage('contact')}
-                className="relative px-6 py-2.5 bg-gradient-to-r from-[#0070f3] to-[#50e3c2] rounded-xl text-white font-medium text-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group overflow-hidden"
+                className="relative px-6 py-2.5 bg-gradient-to-r from-[#0070f3] to-[#50e3c2] rounded-xl text-white font-medium text-sm shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group overflow-hidden flex items-center gap-2"
               >
-                <span className="relative z-10">Get Started</span>
+                <Mail size={16} className="relative z-10" />
+                <span className="relative z-10">Contact Us</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-[#50e3c2] to-[#0070f3] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </button>
             </div>
@@ -178,9 +179,10 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) =
                       setCurrentPage('contact');
                       setIsMenuOpen(false);
                     }}
-                    className="w-full px-4 py-3 bg-gradient-to-r from-[#0070f3] to-[#50e3c2] rounded-xl text-white font-medium shadow-lg hover:shadow-xl transition-all duration-300"
+                    className="w-full px-4 py-3 bg-gradient-to-r from-[#0070f3] to-[#50e3c2] rounded-xl text-white font-medium shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2"
                   >
-                    Get Started
+                    <Mail size={16} />
+                    Contact Us
                   </button>
                 </div>
               </nav>

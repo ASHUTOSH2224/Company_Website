@@ -119,26 +119,26 @@ export const Contact: React.FC<ContactProps> = ({ currentPage }) => {
 
   return (
     <div className="min-h-screen bg-black">
-      <section id="contact" className="section-padding relative">
+      <section id="contact" className="py-16 lg:py-24 relative">
         <div className="container-custom">
           {/* Header */}
-          <div className={`text-center mb-16 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-            <h1 className="heading-xl mb-6">
+          <div className={`text-center mb-16 lg:mb-20 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 lg:mb-8">
               <span className="block text-white">Get in</span>
               <span className="gradient-text-accent">Touch</span>
             </h1>
             
-            <p className="text-body max-w-3xl mx-auto">
+            <p className="text-xl lg:text-2xl text-[#888] max-w-4xl mx-auto leading-relaxed">
               Ready to transform your business with AI? We'd love to hear from you. 
               Choose the best way to reach out and let's start building something amazing together.
             </p>
           </div>
 
           {/* Main Content Grid */}
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
             {/* Contact Form */}
             <div className={`transform transition-all duration-1000 delay-200 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'}`}>
-              <div className="card p-8">
+              <div className="bg-black border border-[#333] rounded-2xl p-8 lg:p-10 hover:border-[#0070f3] transition-colors duration-300">
                 <div className="flex items-center gap-3 mb-8">
                   <div className="w-12 h-12 bg-gradient-to-r from-[#0070f3] to-[#50e3c2] rounded-lg flex items-center justify-center">
                     <Send className="w-6 h-6 text-white" />
@@ -157,9 +157,9 @@ export const Contact: React.FC<ContactProps> = ({ currentPage }) => {
                       {contactReasons.map((reason) => (
                         <label 
                           key={reason.id}
-                          className={`flex items-center p-4 rounded-lg border cursor-pointer transition-all duration-300 ${
+                          className={`flex items-center p-4 rounded-xl border-2 cursor-pointer transition-all duration-300 ${
                             formData.contactType === reason.id 
-                              ? 'bg-[var(--card-bg)] border-[#0070f3]' 
+                              ? 'bg-black border-[#0070f3] shadow-lg shadow-[#0070f3]/20' 
                               : 'border-[#333] hover:border-[#666]'
                           }`}
                         >
@@ -193,7 +193,7 @@ export const Contact: React.FC<ContactProps> = ({ currentPage }) => {
                         value={formData.name}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 bg-black border border-[#333] rounded-lg text-white placeholder-[#666] focus:outline-none focus:border-[#0070f3] transition-all duration-300"
+                        className="w-full px-4 py-3 bg-black border-2 border-[#333] rounded-xl text-white placeholder-[#666] focus:outline-none focus:border-[#0070f3] transition-all duration-300"
                         placeholder="Jane Doe"
                       />
                     </div>
@@ -206,7 +206,7 @@ export const Contact: React.FC<ContactProps> = ({ currentPage }) => {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 bg-black border border-[#333] rounded-lg text-white placeholder-[#666] focus:outline-none focus:border-[#0070f3] transition-all duration-300"
+                        className="w-full px-4 py-3 bg-black border-2 border-[#333] rounded-xl text-white placeholder-[#666] focus:outline-none focus:border-[#0070f3] transition-all duration-300"
                         placeholder="jane@company.com"
                       />
                     </div>
@@ -219,7 +219,7 @@ export const Contact: React.FC<ContactProps> = ({ currentPage }) => {
                       name="company"
                       value={formData.company}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-black border border-[#333] rounded-lg text-white placeholder-[#666] focus:outline-none focus:border-[#0070f3] transition-all duration-300"
+                      className="w-full px-4 py-3 bg-black border-2 border-[#333] rounded-xl text-white placeholder-[#666] focus:outline-none focus:border-[#0070f3] transition-all duration-300"
                       placeholder="Your Company Inc."
                     />
                   </div>
@@ -232,7 +232,7 @@ export const Contact: React.FC<ContactProps> = ({ currentPage }) => {
                       onChange={handleInputChange}
                       required
                       rows={6}
-                      className="w-full px-4 py-3 bg-black border border-[#333] rounded-lg text-white placeholder-[#666] focus:outline-none focus:border-[#0070f3] transition-all duration-300 resize-none"
+                      className="w-full px-4 py-3 bg-black border-2 border-[#333] rounded-xl text-white placeholder-[#666] focus:outline-none focus:border-[#0070f3] transition-all duration-300 resize-none"
                       placeholder="Tell us about your project or how we can help..."
                     />
                   </div>
@@ -240,7 +240,7 @@ export const Contact: React.FC<ContactProps> = ({ currentPage }) => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className={`w-full btn-primary ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+                    className={`w-full bg-gradient-to-r from-[#0070f3] to-[#50e3c2] text-white px-6 py-4 rounded-xl text-lg font-semibold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl flex items-center justify-center gap-3 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
                   >
                     {isSubmitting ? (
                       <>
@@ -263,7 +263,7 @@ export const Contact: React.FC<ContactProps> = ({ currentPage }) => {
             <div className={`space-y-6 transform transition-all duration-1000 delay-400 ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'}`}>
               
               {/* Featured Contact Method */}
-              <div className="card p-8">
+              <div className="bg-black border border-[#333] rounded-2xl p-8 hover:border-[#0070f3] transition-colors duration-300 hover:shadow-2xl hover:shadow-[#0070f3]/20">
                 <div className="flex items-center gap-3 mb-6">
                   <Star className="w-5 h-5 text-[#0070f3]" />
                   <span className="text-sm font-medium text-[#0070f3]">Recommended: {contactMethods[activeContact].title}</span>
@@ -290,7 +290,7 @@ export const Contact: React.FC<ContactProps> = ({ currentPage }) => {
                   </div>
                 </div>
 
-                <div className="bg-[var(--card-bg)] rounded-lg p-4 border border-[#333]">
+                <div className="bg-black rounded-xl p-4 border-2 border-[#333]">
                   <div className="text-sm font-medium text-white mb-2">Best for:</div>
                   <div className="text-sm text-[#888]">{contactMethods[activeContact].bestFor}</div>
                 </div>
@@ -303,7 +303,7 @@ export const Contact: React.FC<ContactProps> = ({ currentPage }) => {
                   return (
                     <div 
                       key={index}
-                      className={`card p-6 cursor-pointer transition-all duration-300 ${activeContact === index ? 'border-[#0070f3]' : 'hover:border-[#666]'}`}
+                      className={`bg-black border-2 border-[#333] rounded-2xl p-6 cursor-pointer transition-all duration-300 hover:scale-105 ${activeContact === index ? 'border-[#0070f3] shadow-lg shadow-[#0070f3]/20' : 'hover:border-[#666]'}`}
                       onClick={() => setActiveContact(index)}
                     >
                       <div className="flex items-center gap-4">
@@ -324,7 +324,7 @@ export const Contact: React.FC<ContactProps> = ({ currentPage }) => {
               </div>
 
               {/* Contact Info */}
-              <div className="card p-6">
+              <div className="bg-black border border-[#333] rounded-2xl p-6 hover:border-[#0070f3] transition-colors duration-300">
                 <h4 className="font-medium text-white mb-4">Other Ways to Reach Us</h4>
                 <div className="space-y-3">
                   <div className="flex items-center gap-3">

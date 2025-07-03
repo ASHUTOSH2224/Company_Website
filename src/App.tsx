@@ -6,6 +6,7 @@ import { WhyChooseUs } from './components/WhyChooseUs';
 import { Footer } from './components/Footer';
 import { About } from './pages/About';
 import { Contact } from './pages/Contact';
+import OurWork from './pages/OurWork';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -25,6 +26,8 @@ function App() {
         return <About currentPage={currentPage} onContactClick={handleContactClick} />;
       case 'contact':
         return <Contact currentPage={currentPage} />;
+      case 'ourwork':
+        return <OurWork currentPage={currentPage} onContactClick={handleContactClick} />;
       case 'services':
         return (
           <div>

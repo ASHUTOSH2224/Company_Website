@@ -21,9 +21,9 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) =
 
   const navigationItems = [
     { id: 'home', label: 'Home', icon: Home },
-    { id: 'services', label: 'Projects', icon: Briefcase },
-    { id: 'about', label: 'Experience', icon: User },
-    { id: 'contact', label: 'Achievements', icon: Mail }
+    { id: 'services', label: 'Services', icon: Briefcase },
+    { id: 'ourwork', label: 'OUR WORK', icon: User },
+    { id: 'contact', label: 'Contact', icon: Mail }
   ];
 
   return (

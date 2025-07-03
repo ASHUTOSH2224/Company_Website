@@ -10,7 +10,7 @@ export const Footer: React.FC<FooterProps> = ({ currentPage, setCurrentPage }) =
   const navigationLinks = [
     { id: 'home', label: 'Home' },
     { id: 'services', label: 'Services' },
-    { id: 'about', label: 'About' },
+    { id: 'ourwork', label: 'Our Work' },
     { id: 'contact', label: 'Contact' }
   ];
 

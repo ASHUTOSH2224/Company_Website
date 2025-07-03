@@ -72,7 +72,7 @@ export const Contact: React.FC<ContactProps> = ({ currentPage }) => {
       icon: Mail,
       title: 'Email Us',
       description: 'Send us a detailed message and we\'ll respond within 24 hours',
-      contact: 'info@upstraiq.com',
+      contact: 'upstraiq@gmail.com',
       responseTime: '24 hours',
       bestFor: 'Detailed inquiries, project discussions, and formal proposals',
       color: 'from-[#0070f3] to-[#50e3c2]'

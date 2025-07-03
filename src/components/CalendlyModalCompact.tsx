@@ -10,7 +10,7 @@ interface CalendlyModalCompactProps {
 const CalendlyModalCompact: React.FC<CalendlyModalCompactProps> = ({
   isOpen,
   onClose,
-  url = 'https://calendly.com/2224ashutosh/30min'
+  url = 'https://calendly.com/upstraiq/30min'
 }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [iframeLoaded, setIframeLoaded] = useState(false);

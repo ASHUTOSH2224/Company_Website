@@ -112,7 +112,7 @@ export const Footer: React.FC<FooterProps> = ({ currentPage, setCurrentPage, onS
                 <div className="w-8 h-8 border border-[#333] rounded-lg flex items-center justify-center">
                   <Mail size={16} className="text-[#888]" />
                 </div>
-                <span className="text-body-sm">info@upstraiq.com</span>
+                <span className="text-body-sm">upstraiq@gmail.com</span>
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 border border-[#333] rounded-lg flex items-center justify-center">

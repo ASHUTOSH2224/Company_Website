@@ -95,7 +95,7 @@ function App() {
       <main className="pt-20">
         {renderPage()}
       </main>
-      <Footer currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      <Footer currentPage={currentPage} setCurrentPage={setCurrentPage} onServiceLearnMore={handleServiceLearnMore} />
       <ChatBot onContactClick={handleContactClick} />
     </div>
   );

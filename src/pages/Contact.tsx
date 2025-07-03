@@ -72,7 +72,7 @@ export const Contact: React.FC<ContactProps> = ({ currentPage }) => {
       icon: Mail,
       title: 'Email Us',
       description: 'Send us a detailed message and we\'ll respond within 24 hours',
-      contact: 'hello@upstraiq.com',
+      contact: 'info@upstraiq.com',
       responseTime: '24 hours',
       bestFor: 'Detailed inquiries, project discussions, and formal proposals',
       color: 'from-[#0070f3] to-[#50e3c2]'
@@ -342,11 +342,11 @@ export const Contact: React.FC<ContactProps> = ({ currentPage }) => {
                 <div className="space-y-3">
                   <div className="flex items-center gap-3">
                     <Phone className="w-4 h-4 text-[#0070f3]" />
-                    <span className="text-[#888]">+1 (555) 123-4567</span>
+                    <span className="text-[#888]">+91 8521010925</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <MapPin className="w-4 h-4 text-[#50e3c2]" />
-                    <span className="text-[#888]">San Francisco, CA</span>
+                    <span className="text-[#888]">Varanasi, India</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Globe className="w-4 h-4 text-[#0070f3]" />

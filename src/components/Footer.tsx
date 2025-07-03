@@ -4,9 +4,10 @@ import { Mail, Phone, MapPin, Github, Linkedin, Twitter } from 'lucide-react';
 interface FooterProps {
   currentPage: string;
   setCurrentPage: (page: string) => void;
+  onServiceLearnMore?: (serviceId: string) => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ currentPage, setCurrentPage }) => {
+export const Footer: React.FC<FooterProps> = ({ currentPage, setCurrentPage, onServiceLearnMore }) => {
   const navigationLinks = [
     { id: 'home', label: 'Home' },
     { id: 'services', label: 'Services' },
@@ -15,12 +16,12 @@ export const Footer: React.FC<FooterProps> = ({ currentPage, setCurrentPage }) =
   ];
 
   const services = [
-    'AI Marketing Automation',
-    'E-commerce Development',
-    'Mobile App Development',
-    'Custom AI Solutions',
-    'Web3 & Blockchain',
-    'Machine Learning'
+    { id: 'ai-marketing', label: 'AI Marketing Automation' },
+    { id: 'ecommerce', label: 'E-commerce Development' },
+    { id: 'mobile-apps', label: 'Mobile App Development' },
+    { id: 'ml-models', label: 'Custom AI Solutions' },
+    { id: 'blockchain', label: 'Web3 & Blockchain' },
+    { id: 'chatbots', label: 'Machine Learning' }
   ];
 
   const socialLinks = [
@@ -28,6 +29,14 @@ export const Footer: React.FC<FooterProps> = ({ currentPage, setCurrentPage }) =
     { icon: Linkedin, href: '#', label: 'LinkedIn' },
     { icon: Twitter, href: '#', label: 'Twitter' }
   ];
+
+  const handleServiceClick = (serviceId: string) => {
+    if (onServiceLearnMore) {
+      onServiceLearnMore(serviceId);
+    } else {
+      setCurrentPage('services');
+    }
+  };
 
   return (
     <footer className="border-t border-[#333] bg-black">
@@ -80,16 +89,16 @@ export const Footer: React.FC<FooterProps> = ({ currentPage, setCurrentPage }) =
           </div>
 
           {/* Services */}
-            <div className="space-y-4">
+          <div className="space-y-4">
             <h3 className="text-white font-semibold">Services</h3>
             <nav className="space-y-3">
-              {services.map((service, index) => (
+              {services.map((service) => (
                 <button
-                  key={index}
-                  onClick={() => setCurrentPage('services')}
-                  className="block text-left nav-link"
+                  key={service.id}
+                  onClick={() => handleServiceClick(service.id)}
+                  className="block text-left nav-link hover:text-[#0070f3] transition-colors duration-300"
                 >
-                  {service}
+                  {service.label}
                 </button>
               ))}
             </nav>
@@ -103,19 +112,19 @@ export const Footer: React.FC<FooterProps> = ({ currentPage, setCurrentPage }) =
                 <div className="w-8 h-8 border border-[#333] rounded-lg flex items-center justify-center">
                   <Mail size={16} className="text-[#888]" />
                 </div>
-                <span className="text-body-sm">hello@upstraiq.com</span>
+                <span className="text-body-sm">info@upstraiq.com</span>
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 border border-[#333] rounded-lg flex items-center justify-center">
                   <Phone size={16} className="text-[#888]" />
                 </div>
-                <span className="text-body-sm">+1 (555) 123-4567</span>
+                <span className="text-body-sm">+91 8521010925</span>
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 border border-[#333] rounded-lg flex items-center justify-center">
                   <MapPin size={16} className="text-[#888]" />
                 </div>
-                <span className="text-body-sm">San Francisco, CA</span>
+                <span className="text-body-sm">Varanasi, India</span>
               </div>
             </div>
             <button 
@@ -131,7 +140,7 @@ export const Footer: React.FC<FooterProps> = ({ currentPage, setCurrentPage }) =
         <div className="py-6 border-t border-[#333] flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-body-sm">
             © 2025 Upstraiq. All rights reserved.
-            </p>
+          </p>
           <div className="flex items-center gap-6">
             <button className="nav-link">Privacy Policy</button>
             <button className="nav-link">Terms of Service</button>

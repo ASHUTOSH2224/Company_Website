@@ -18,7 +18,10 @@ import {
   Shield,
   Bot,
   Database,
-  MessageCircle
+  MessageCircle,
+  Sparkles,
+  Target,
+  TrendingUp
 } from 'lucide-react';
 
 interface OurWorkProps {
@@ -28,20 +31,15 @@ interface OurWorkProps {
 
 const OurWork: React.FC<OurWorkProps> = ({ currentPage, onContactClick }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState('all');
+
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
-  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+  const [playingVideo, setPlayingVideo] = useState<number | null>(null);
+  const [textComplete, setTextComplete] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
+    setTimeout(() => setTextComplete(true), 1500);
   }, []);
-
-  const categories = [
-    { id: 'all', label: 'All Projects', count: 12 },
-    { id: 'ai', label: 'AI Solutions', count: 5 },
-    { id: 'web', label: 'Web Apps', count: 4 },
-    { id: 'mobile', label: 'Mobile Apps', count: 3 }
-  ];
 
   const projects = [
     {
@@ -181,66 +179,76 @@ const OurWork: React.FC<OurWorkProps> = ({ currentPage, onContactClick }) => {
     }
   ];
 
-  const filteredProjects = selectedCategory === 'all' 
-    ? projects 
-    : projects.filter(project => project.category === selectedCategory);
 
-  const VideoModal = () => {
-    if (!selectedVideo) return null;
 
-    return (
-      <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-        <div className="relative w-full max-w-4xl aspect-video bg-black rounded-xl overflow-hidden">
-          <button
-            onClick={() => setSelectedVideo(null)}
-            className="absolute top-4 right-4 z-10 w-10 h-10 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center transition-colors"
-          >
-            <span className="text-white text-xl">×</span>
-          </button>
-          <iframe
-            width="100%"
-            height="100%"
-            src={`https://www.youtube.com/embed/${selectedVideo}?autoplay=1`}
-            title="Project Video"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="w-full h-full"
-          ></iframe>
-        </div>
-      </div>
-    );
-  };
+
 
   return (
-    <div className="min-h-screen bg-black">
-      <VideoModal />
+    <div className="min-h-screen bg-black overflow-hidden">
+      
+      {/* Subtle animated background elements matching Hero */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-[#0070f3] rounded-full opacity-20 animate-float" style={{ animationDelay: '0s' }}></div>
+        <div className="absolute top-1/3 right-1/4 w-1 h-1 bg-[#50e3c2] rounded-full opacity-30 animate-float" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute bottom-1/3 left-1/3 w-1.5 h-1.5 bg-[#0070f3] rounded-full opacity-25 animate-float" style={{ animationDelay: '4s' }}></div>
+        <div className="absolute bottom-1/4 right-1/3 w-1 h-1 bg-[#50e3c2] rounded-full opacity-20 animate-float" style={{ animationDelay: '1s' }}></div>
+        
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#0070f3] rounded-full mix-blend-multiply filter blur-3xl opacity-5 animate-pulse" style={{ animationDuration: '4s' }}></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-[#50e3c2] rounded-full mix-blend-multiply filter blur-3xl opacity-5 animate-pulse" style={{ animationDelay: '2s', animationDuration: '4s' }}></div>
+      </div>
       
       {/* Hero Section */}
-      <section className="py-16 lg:py-24 relative">
-        <div className="container-custom">
-          <div className={`text-center mb-16 lg:mb-20 transition-all duration-1000 ${
+      <section className="relative py-20 lg:py-32">
+        <div className="container-custom relative z-10">
+          <div className={`text-center mb-16 lg:mb-24 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 lg:mb-8">
-              Our <span className="gradient-text-accent">Work</span>
-            </h1>
-            <p className="text-xl lg:text-2xl text-[#888] max-w-4xl mx-auto mb-12 lg:mb-16 leading-relaxed">
-              Discover how we've transformed businesses with cutting-edge AI solutions, 
-              innovative web applications, and game-changing mobile experiences.
-            </p>
+            {/* Main heading with elegant text reveal animation matching Hero */}
+            <div className="space-y-6 lg:space-y-8 mb-12">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black leading-[0.9] tracking-tight font-space">
+                <div className="flex flex-col items-center gap-2 lg:gap-4">
+                  <div className="overflow-hidden">
+                    <span className={`block text-white drop-shadow-2xl transition-all duration-1000 ease-out ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}`}>
+                      Our
+                    </span>
+                  </div>
+                  <div className="overflow-hidden">
+                    <span className={`block bg-gradient-to-r from-[#0070f3] via-[#50e3c2] to-[#0070f3] bg-clip-text text-transparent font-black drop-shadow-xl animate-gradient bg-size-300 transition-all duration-1000 ease-out delay-300 ${isVisible ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-full opacity-0 scale-95'}`}>
+                      Work
+                    </span>
+                  </div>
+                </div>
+              </h1>
+              
+              <div className="relative max-w-4xl mx-auto">
+                <div className="overflow-hidden">
+                  <p className={`text-xl lg:text-2xl xl:text-3xl text-[#ccc] leading-relaxed font-medium drop-shadow-lg transition-all duration-1000 ease-out delay-600 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
+                    Discover how we've transformed businesses with <span className="text-[#50e3c2] font-bold">cutting-edge AI solutions</span>, 
+                    <span className="text-[#0070f3] font-bold"> innovative web applications</span>, and 
+                    <span className="text-[#50e3c2] font-bold"> game-changing mobile experiences</span>.
+                  </p>
+                </div>
+                {/* Decorative animated lines */}
+                <div className={`absolute -top-4 -left-4 w-8 h-8 border-l-2 border-t-2 border-[#0070f3] opacity-60 transition-all duration-1000 delay-900 ${textComplete ? 'scale-100 opacity-60' : 'scale-0 opacity-0'}`}></div>
+                <div className={`absolute -bottom-4 -right-4 w-8 h-8 border-r-2 border-b-2 border-[#50e3c2] opacity-60 transition-all duration-1000 delay-1100 ${textComplete ? 'scale-100 opacity-60' : 'scale-0 opacity-0'}`}></div>
+              </div>
+            </div>
             
-            {/* Stats */}
+            {/* Stats matching Hero style */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 max-w-5xl mx-auto">
               {[
-                { icon: Award, value: '50+', label: 'Projects Delivered' },
-                { icon: Users, value: '30+', label: 'Happy Clients' },
-                { icon: Code, value: '98%', label: 'Success Rate' },
-                { icon: Star, value: '4.9', label: 'Client Rating' }
+                { icon: Target, value: '50+', label: 'Projects Delivered', delay: '1200ms' },
+                { icon: Users, value: '30+', label: 'Happy Clients', delay: '1300ms' },
+                { icon: Award, value: '98%', label: 'Success Rate', delay: '1400ms' },
+                { icon: Star, value: '4.9', label: 'Client Rating', delay: '1500ms' }
               ].map((stat, index) => {
                 const Icon = stat.icon;
                 return (
-                  <div key={index} className="text-center group">
+                  <div 
+                    key={index} 
+                    className={`text-center group transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+                    style={{ transitionDelay: stat.delay }}
+                  >
                     <div className="w-16 h-16 lg:w-20 lg:h-20 bg-gradient-to-br from-[#0070f3] to-[#50e3c2] rounded-2xl flex items-center justify-center mx-auto mb-4 lg:mb-6 group-hover:scale-110 transition-all duration-300 shadow-lg">
                       <Icon className="w-8 h-8 lg:w-10 lg:h-10 text-white" />
                     </div>
@@ -254,28 +262,22 @@ const OurWork: React.FC<OurWorkProps> = ({ currentPage, onContactClick }) => {
         </div>
       </section>
 
-      {/* Filter Categories */}
-      <section className="py-12 lg:py-16">
+      {/* Projects Section */}
+      <section className="relative py-20 lg:py-32">
         <div className="container-custom">
-          <div className="flex flex-wrap justify-center gap-4 lg:gap-6 mb-12 lg:mb-16">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setSelectedCategory(category.id)}
-                className={`px-6 lg:px-8 py-3 lg:py-4 rounded-xl border-2 transition-all duration-300 text-base lg:text-lg font-medium ${
-                  selectedCategory === category.id
-                    ? 'bg-gradient-to-r from-[#0070f3] to-[#50e3c2] text-white border-transparent shadow-lg'
-                    : 'border-[#333] bg-black text-[#888] hover:text-white hover:border-[#0070f3] hover:shadow-md'
-                }`}
-              >
-                {category.label} ({category.count})
-              </button>
-            ))}
+          {/* Projects Section Heading */}
+          <div className="text-center mb-16 lg:mb-24">
+            <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 lg:mb-8 font-space">
+              Featured <span className="gradient-text-accent">Projects</span>
+            </h2>
+            <p className="text-xl lg:text-2xl text-[#888] max-w-4xl mx-auto leading-relaxed">
+              Explore our portfolio of innovative solutions that have transformed businesses and delivered exceptional results.
+            </p>
           </div>
 
-          {/* Projects Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
-            {filteredProjects.map((project, index) => {
+          {/* Projects Grid - 1 column layout with increased width */}
+          <div className="grid grid-cols-1 gap-12 lg:gap-16 max-w-7xl mx-auto">
+            {projects.map((project, index) => {
               const Icon = project.icon;
               const isHovered = hoveredProject === index;
               
@@ -285,116 +287,121 @@ const OurWork: React.FC<OurWorkProps> = ({ currentPage, onContactClick }) => {
                   className={`group cursor-pointer transition-all duration-700 ${
                     isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}
-                  style={{ animationDelay: `${index * 100}ms` }}
+                  style={{ animationDelay: `${2000 + index * 150}ms` }}
                   onMouseEnter={() => setHoveredProject(index)}
                   onMouseLeave={() => setHoveredProject(null)}
                 >
-                  <div className="bg-black border border-[#333] rounded-2xl overflow-hidden hover:transform hover:-translate-y-2 hover:scale-105 transition-all duration-700 h-full hover:border-[#0070f3] hover:shadow-2xl hover:shadow-[#0070f3]/20">
-                    {/* Project Image with Video Overlay */}
-                    <div className="relative aspect-video overflow-hidden">
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                      
-                      {/* Video Play Button */}
-                      <div className="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                        <button
-                          onClick={() => setSelectedVideo(project.videoId)}
-                          className="w-16 h-16 lg:w-20 lg:h-20 bg-gradient-to-r from-[#0070f3] to-[#50e3c2] rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-xl"
-                        >
-                          <Play className="w-6 h-6 lg:w-8 lg:h-8 text-white ml-1 lg:ml-1.5" />
-                        </button>
-                      </div>
+                  <div className="bg-black/80 backdrop-blur-sm border border-[#333] rounded-2xl overflow-hidden hover:transform hover:-translate-y-3 hover:scale-[1.01] transition-all duration-700 h-full hover:border-[#0070f3] hover:shadow-2xl hover:shadow-[#0070f3]/30">
+                    <div className="grid lg:grid-cols-2 gap-0">
+                      {/* Project Image/Video */}
+                      <div className="relative aspect-[16/10] lg:aspect-[4/3] overflow-hidden">
+                        {playingVideo === project.id ? (
+                          <div className="w-full h-full relative">
+                            <iframe
+                              width="100%"
+                              height="100%"
+                              src={`https://www.youtube.com/embed/${project.videoId}?autoplay=1&rel=0`}
+                              title={`${project.title} Demo`}
+                              frameBorder="0"
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                              allowFullScreen
+                              className="w-full h-full"
+                            ></iframe>
+                            {/* Close Video Button */}
+                            <button
+                              onClick={() => setPlayingVideo(null)}
+                              className="absolute top-4 right-4 w-10 h-10 bg-black/80 hover:bg-black/90 rounded-full flex items-center justify-center transition-all duration-300 border border-[#333] hover:border-[#0070f3] z-10"
+                            >
+                              <span className="text-white text-lg">×</span>
+                            </button>
+                          </div>
+                        ) : (
+                          <>
+                            <img
+                              src={project.image}
+                              alt={project.title}
+                              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            />
+                            
+                            {/* Video Play Button */}
+                            <div className="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                              <button
+                                onClick={() => setPlayingVideo(project.id)}
+                                className="w-20 h-20 lg:w-24 lg:h-24 bg-gradient-to-r from-[#0070f3] to-[#50e3c2] rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-xl"
+                              >
+                                <Play className="w-8 h-8 lg:w-10 lg:h-10 text-white ml-1 lg:ml-1.5" />
+                              </button>
+                            </div>
+                          </>
+                        )}
 
                       {/* Project Category Badge */}
-                      <div className="absolute top-4 left-4">
-                        <div className={`w-12 h-12 bg-gradient-to-br ${project.color} rounded-xl flex items-center justify-center shadow-lg`}>
-                          <Icon className="w-6 h-6 text-white" />
+                      <div className="absolute top-6 left-6">
+                        <div className={`w-14 h-14 bg-gradient-to-br ${project.color} rounded-xl flex items-center justify-center shadow-lg`}>
+                          <Icon className="w-7 h-7 text-white" />
                         </div>
                       </div>
 
-                      {/* Project Year */}
-                      <div className="absolute top-4 right-4 bg-black/80 backdrop-blur-sm px-4 py-2 rounded-lg text-sm text-white font-medium">
-                        {project.year}
+                        {/* Project Year */}
+                        <div className="absolute top-6 right-6 bg-black/80 backdrop-blur-sm px-4 py-2 rounded-lg text-sm text-white font-medium border border-[#333]">
+                          {project.year}
+                        </div>
                       </div>
-                    </div>
 
-                    {/* Project Content */}
-                    <div className="p-6 lg:p-8 space-y-4 lg:space-y-6 flex-1 flex flex-col">
+                      {/* Project Content */}
+                      <div className="p-6 lg:p-8 space-y-4 lg:space-y-6 flex-1 flex flex-col">
                       <div className="space-y-3 flex-1">
-                        <h3 className="text-xl lg:text-2xl font-semibold text-white group-hover:text-[#50e3c2] transition-colors duration-300 line-clamp-2">
+                        <h3 className="text-2xl lg:text-3xl font-bold text-white group-hover:text-[#50e3c2] transition-colors duration-300 line-clamp-2 font-space">
                           {project.title}
                         </h3>
-                        <p className="text-base lg:text-lg text-[#888] leading-relaxed line-clamp-3">
+                        <p className="text-lg lg:text-xl text-[#888] leading-relaxed line-clamp-3">
                           {project.description}
                         </p>
                       </div>
 
                       {/* Project Details */}
-                      <div className="grid grid-cols-2 gap-4 lg:gap-6 text-sm lg:text-base">
+                      <div className="grid grid-cols-2 gap-4 lg:gap-6 text-base lg:text-lg">
                         <div className="flex items-center gap-3 text-[#666]">
-                          <Calendar className="w-4 h-4 lg:w-5 lg:h-5" />
+                          <Calendar className="w-5 h-5 lg:w-6 lg:h-6" />
                           <span>{project.duration}</span>
                         </div>
                         <div className="flex items-center gap-3 text-[#666]">
-                          <Users className="w-4 h-4 lg:w-5 lg:h-5" />
+                          <Users className="w-5 h-5 lg:w-6 lg:h-6" />
                           <span>{project.team}</span>
                         </div>
                       </div>
 
-                      {/* Client & Results */}
-                      <div className="border-t border-[#333] pt-4 space-y-3">
-                        <div className="flex justify-between items-center">
-                          <span className="text-sm lg:text-base text-[#666]">Client:</span>
-                          <span className="text-sm lg:text-base text-white font-medium truncate ml-4">{project.client}</span>
-                        </div>
-                        <div className="flex justify-between items-center">
-                          <span className="text-sm lg:text-base text-[#666]">Results:</span>
-                          <span className="text-sm lg:text-base gradient-text-accent font-medium truncate ml-4">{project.results}</span>
-                        </div>
-                      </div>
-
                       {/* Technology Tags */}
-                      <div className="flex flex-wrap gap-2 lg:gap-3">
+                      <div className="flex flex-wrap gap-3 lg:gap-4">
                         {project.tags.slice(0, 4).map((tag, tagIndex) => (
                           <span
                             key={tagIndex}
-                            className="px-3 py-1.5 bg-[#333] text-sm text-[#888] rounded-lg hover:bg-[#0070f3] hover:text-white transition-colors duration-300 font-medium"
+                            className="px-4 py-2 bg-[#333] text-sm text-[#888] rounded-xl hover:bg-[#0070f3] hover:text-white transition-colors duration-300 font-medium"
                           >
                             {tag}
                           </span>
                         ))}
                         {project.tags.length > 4 && (
-                          <span className="px-3 py-1.5 bg-[#333] text-sm text-[#666] rounded-lg font-medium">
+                          <span className="px-4 py-2 bg-[#333] text-sm text-[#666] rounded-xl font-medium">
                             +{project.tags.length - 4}
                           </span>
                         )}
                       </div>
 
-                      {/* Action Buttons */}
-                      <div className={`flex gap-3 lg:gap-4 pt-4 transition-all duration-500 mt-auto ${
-                        isHovered ? 'opacity-100 translate-y-0' : 'opacity-70 translate-y-2'
+                      {/* Action Button */}
+                      <div className={`flex justify-start pt-4 transition-all duration-500 ${
+                        isHovered ? 'opacity-100 translate-y-0' : 'opacity-80 translate-y-2'
                       }`}>
                         <a
                           href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex-1 flex items-center justify-center gap-2 py-3 lg:py-4 px-4 lg:px-6 bg-gradient-to-r from-[#0070f3] to-[#50e3c2] rounded-xl text-white text-sm lg:text-base font-medium hover:scale-105 transition-transform duration-300 shadow-lg"
+                          className="flex items-center justify-center gap-3 py-3 lg:py-4 px-6 lg:px-8 bg-gradient-to-r from-[#0070f3] to-[#50e3c2] rounded-xl text-white text-base lg:text-lg font-bold hover:scale-105 transition-transform duration-300 shadow-xl"
                         >
-                          <Eye className="w-4 h-4 lg:w-5 lg:h-5" />
-                          <span>Live Demo</span>
+                          <Eye className="w-5 h-5 lg:w-6 lg:h-6" />
+                          <span>View Live Demo</span>
                         </a>
-                        <a
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center justify-center gap-2 py-3 lg:py-4 px-4 lg:px-6 border-2 border-[#333] rounded-xl text-[#888] hover:text-white hover:border-[#0070f3] text-sm lg:text-base transition-all duration-300 font-medium"
-                        >
-                          <Github className="w-4 h-4 lg:w-5 lg:h-5" />
-                          <span>Code</span>
-                        </a>
+                      </div>
                       </div>
                     </div>
                   </div>
@@ -460,21 +467,42 @@ const OurWork: React.FC<OurWorkProps> = ({ currentPage, onContactClick }) => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 lg:py-24">
+      <section className="relative py-20 lg:py-32">
         <div className="container-custom">
-          <div className="bg-black border border-[#333] rounded-3xl p-12 lg:p-16 text-center hover:border-[#0070f3] transition-colors duration-300">
-            <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 lg:mb-8">
+          <div className="bg-black/80 backdrop-blur-sm border border-[#333] rounded-3xl p-12 lg:p-20 text-center hover:border-[#0070f3] transition-all duration-500 hover:shadow-2xl hover:shadow-[#0070f3]/10">
+            <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 lg:mb-8 font-space">
               Ready to Start Your <span className="gradient-text-accent">Next Project?</span>
             </h2>
             <p className="text-xl lg:text-2xl text-[#888] mb-12 lg:mb-16 max-w-4xl mx-auto leading-relaxed">
               Let's discuss how we can bring your vision to life with cutting-edge technology and innovative solutions.
             </p>
+            
+            {/* Trust indicators matching Hero style */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-8 lg:gap-12 mb-12 lg:mb-16">
+              {[
+                { icon: Sparkles, text: '✨ Free consultation', color: 'bg-[#50e3c2]' },
+                { icon: Target, text: '🎯 Custom solutions', color: 'bg-[#0070f3]' },
+                { icon: TrendingUp, text: '📈 Proven results', color: 'bg-[#50e3c2]' }
+              ].map((item, index) => (
+                <div 
+                  key={index}
+                  className="flex items-center gap-3 text-[#888] text-lg lg:text-xl transition-all duration-300"
+                >
+                  <div className={`w-3 h-3 ${item.color} rounded-full animate-pulse`} style={{ animationDelay: `${index * 0.5}s` }}></div>
+                  <span className="font-medium">{item.text}</span>
+                </div>
+              ))}
+            </div>
+            
             <button
               onClick={onContactClick}
-              className="bg-gradient-to-r from-[#0070f3] to-[#50e3c2] text-white px-12 lg:px-16 py-4 lg:py-6 rounded-2xl text-lg lg:text-xl font-semibold hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl inline-flex items-center gap-3 group"
+              className="group relative bg-gradient-to-r from-[#0070f3] to-[#50e3c2] text-white px-12 lg:px-16 py-4 lg:py-6 rounded-2xl text-lg lg:text-xl font-bold hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl inline-flex items-center gap-3 overflow-hidden"
             >
-              Start Your Project
-              <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+              <span className="relative z-10 flex items-center gap-3">
+                Start Your Project
+                <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
             </button>
           </div>
         </div>

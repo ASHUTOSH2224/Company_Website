@@ -84,14 +84,14 @@ const ChatBot: React.FC<ChatBotProps> = ({ onContactClick }) => {
         
         // Convert current conversation to the format expected by Groq
         const conversationHistory = messages
-          .filter(msg => !msg.isTyping && msg.type !== 'industry-selector' && msg.type !== 'service-selector')
+          .filter(msg => !msg.isTyping)
           .map(msg => ({
             role: msg.isBot ? 'assistant' as const : 'user' as const,
             content: msg.text
           }));
 
-        // Add context about selected industry and service
-        const contextualMessage = `User is from ${chatState.selectedIndustry} industry and interested in ${chatState.selectedService}. Question: ${userMessage}`;
+        // Add context about the user's question
+        const contextualMessage = `Question: ${userMessage}`;
         
         return await groqApiService.generateResponse(contextualMessage, conversationHistory);
       } else {

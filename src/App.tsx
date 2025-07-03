@@ -96,6 +96,7 @@ function App() {
         {renderPage()}
       </main>
       <Footer currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      <ChatBot onContactClick={handleContactClick} />
     </div>
   );
 }

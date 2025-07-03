@@ -5,6 +5,7 @@ import { WhatWeBuild } from './components/WhatWeBuild';
 import { Services } from './components/Services';
 import { WhyChooseUs } from './components/WhyChooseUs';
 import { Footer } from './components/Footer';
+import ChatBot from './components/ChatBot';
 import { About } from './pages/About';
 import { Contact } from './pages/Contact';
 import OurWork from './pages/OurWork';

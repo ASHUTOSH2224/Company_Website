@@ -23,7 +23,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) =
     { id: 'home', label: 'Home', icon: Home },
     { id: 'services', label: 'Services', icon: Briefcase },
     { id: 'ourwork', label: 'OUR WORK', icon: User },
-    { id: 'contact', label: 'Contact', icon: Mail }
+    { id: 'company', label: 'Company', icon: User }
   ];
 
   return (

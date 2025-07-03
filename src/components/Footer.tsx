@@ -11,7 +11,7 @@ export const Footer: React.FC<FooterProps> = ({ currentPage, setCurrentPage }) =
     { id: 'home', label: 'Home' },
     { id: 'services', label: 'Services' },
     { id: 'ourwork', label: 'Our Work' },
-    { id: 'contact', label: 'Contact' }
+    { id: 'company', label: 'Company' }
   ];
 
   const services = [

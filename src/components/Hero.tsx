@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ArrowRight, Bot, Zap, Globe, Smartphone, Brain, Code, Star, TrendingUp, Shield } from 'lucide-react';
+import { ArrowRight, Bot, Zap, Globe, Smartphone, Brain, Code, Star, TrendingUp, Shield, Sparkles, Rocket, Target } from 'lucide-react';
 
 interface HeroProps {
   onContactClick?: () => void;
@@ -8,32 +8,58 @@ interface HeroProps {
 export const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
-  const rotatingWords = ['AI', 'Innovation', 'Technology', 'Solutions'];
+  const rotatingWords = ['AI Solutions', 'Innovation', 'Technology', 'Automation'];
 
   useEffect(() => {
     setIsVisible(true);
     
-    // Rotate words every 3 seconds
+    // Rotate words every 2.5 seconds
     const wordInterval = setInterval(() => {
       setCurrentWordIndex((prev) => (prev + 1) % rotatingWords.length);
-    }, 3000);
+    }, 2500);
 
-    return () => clearInterval(wordInterval);
+    // Mouse tracking for interactive effects
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      clearInterval(wordInterval);
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center py-20">
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Subtle gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-black to-gray-900 opacity-50"></div>
+    <section className="relative min-h-screen flex items-center py-20 overflow-hidden">
+      {/* Enhanced Background */}
+      <div className="absolute inset-0">
+        {/* Dynamic gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black"></div>
+        <div className="absolute inset-0 bg-gradient-to-tr from-[#0070f3]/5 via-transparent to-[#50e3c2]/5"></div>
         
-        {/* Floating elements */}
-        <div className="absolute top-20 left-10 w-2 h-2 bg-[#0070f3] rounded-full animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-1 h-1 bg-[#50e3c2] rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute bottom-32 left-1/4 w-1.5 h-1.5 bg-[#0070f3] rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute bottom-20 right-1/3 w-1 h-1 bg-[#50e3c2] rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+        {/* Interactive mouse follower */}
+        <div 
+          className="absolute w-96 h-96 bg-gradient-radial from-[#0070f3]/10 via-[#0070f3]/5 to-transparent rounded-full pointer-events-none transition-all duration-300 ease-out"
+          style={{
+            left: mousePosition.x - 192,
+            top: mousePosition.y - 192,
+          }}
+        ></div>
+        
+        {/* Enhanced floating elements */}
+        <div className="absolute top-20 left-10 w-3 h-3 bg-gradient-to-r from-[#0070f3] to-[#50e3c2] rounded-full animate-pulse shadow-lg shadow-[#0070f3]/50"></div>
+        <div className="absolute top-32 right-20 w-2 h-2 bg-gradient-to-r from-[#50e3c2] to-[#0070f3] rounded-full animate-pulse shadow-lg shadow-[#50e3c2]/50" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute bottom-32 left-1/4 w-4 h-4 bg-gradient-to-r from-[#0070f3] to-[#50e3c2] rounded-full animate-pulse shadow-lg shadow-[#0070f3]/50" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute bottom-20 right-1/3 w-2 h-2 bg-gradient-to-r from-[#50e3c2] to-[#0070f3] rounded-full animate-pulse shadow-lg shadow-[#50e3c2]/50" style={{ animationDelay: '0.5s' }}></div>
+        <div className="absolute top-1/2 left-16 w-2 h-2 bg-gradient-to-r from-[#0070f3] to-[#50e3c2] rounded-full animate-pulse shadow-lg shadow-[#0070f3]/50" style={{ animationDelay: '1.5s' }}></div>
+        <div className="absolute top-3/4 right-16 w-3 h-3 bg-gradient-to-r from-[#50e3c2] to-[#0070f3] rounded-full animate-pulse shadow-lg shadow-[#50e3c2]/50" style={{ animationDelay: '2.5s' }}></div>
+        
+        {/* Animated grid pattern */}
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23333" fill-opacity="0.1"%3E%3Ccircle cx="30" cy="30" r="1"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
       </div>
       
       <div className="container-custom relative z-10">

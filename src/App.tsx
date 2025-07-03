@@ -7,6 +7,7 @@ import { Footer } from './components/Footer';
 import { About } from './pages/About';
 import { Contact } from './pages/Contact';
 import OurWork from './pages/OurWork';
+import Company from './pages/Company';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -28,6 +29,8 @@ function App() {
         return <Contact currentPage={currentPage} />;
       case 'ourwork':
         return <OurWork currentPage={currentPage} onContactClick={handleContactClick} />;
+      case 'company':
+        return <Company currentPage={currentPage} onContactClick={handleContactClick} />;
       case 'services':
         return (
           <div>

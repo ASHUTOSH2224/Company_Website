@@ -60,9 +60,9 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) =
                     {/* Decorative Elements */}
                     <div className="absolute top-1 right-1 w-1 h-1 rounded-full bg-[#50e3c2] opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div className="absolute bottom-1 left-1 w-0.5 h-0.5 rounded-full bg-[#0070f3] opacity-40 group-hover:opacity-80 transition-opacity duration-300"></div>
-                  </div>
-                </div>
-                
+            </div>
+          </div>
+          
                 {/* Glow Effect */}
                 <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-[#0070f3] to-[#50e3c2] opacity-0 group-hover:opacity-30 transition-opacity duration-300 blur-md -z-10"></div>
               </div>
@@ -114,11 +114,11 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) =
                       {isActive && (
                         <div className="absolute inset-0 bg-gradient-to-r from-[#0070f3]/20 to-[#50e3c2]/20 rounded-xl"></div>
                       )}
-                    </button>
+            </button>
                   );
                 })}
               </div>
-            </nav>
+          </nav>
 
             {/* Right Side Actions */}
             <div className="hidden md:flex items-center gap-3">
@@ -183,11 +183,11 @@ export const Header: React.FC<HeaderProps> = ({ currentPage, setCurrentPage }) =
                   >
                     <Mail size={16} />
                     Contact Us
-                  </button>
+              </button>
                 </div>
-              </nav>
-            </div>
-          )}
+            </nav>
+          </div>
+        )}
         </div>
       </div>
     </header>

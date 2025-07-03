@@ -12,6 +12,7 @@ import {
   MapPin,
   Globe
 } from 'lucide-react';
+import CalendlyButton from '../components/CalendlyButton';
 
 interface ContactProps {
   currentPage: string;
@@ -64,6 +65,8 @@ export const Contact: React.FC<ContactProps> = ({ currentPage }) => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+
+
   const contactMethods = [
     {
       icon: Mail,
@@ -87,10 +90,11 @@ export const Contact: React.FC<ContactProps> = ({ currentPage }) => {
       icon: Calendar,
       title: 'Schedule a Call',
       description: 'Book a 30-minute consultation to discuss your AI needs',
-      contact: 'calendly.com/upstraiq',
+      contact: 'Click to open calendar',
       responseTime: 'Same day',
       bestFor: 'Project planning, technical discussions, and strategy sessions',
-      color: 'from-[#0070f3] to-[#50e3c2]'
+      color: 'from-[#0070f3] to-[#50e3c2]',
+      hasCalendly: true
     }
   ];
 
@@ -294,6 +298,15 @@ export const Contact: React.FC<ContactProps> = ({ currentPage }) => {
                   <div className="text-sm font-medium text-white mb-2">Best for:</div>
                   <div className="text-sm text-[#888]">{contactMethods[activeContact].bestFor}</div>
                 </div>
+
+                {/* Schedule Call Button */}
+                {contactMethods[activeContact].hasCalendly && (
+                  <CalendlyButton 
+                    className="w-full mt-4 bg-gradient-to-r from-[#0070f3] to-[#50e3c2] text-white px-6 py-3 rounded-xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl"
+                    buttonText="Schedule Your Call"
+                    showIcon={true}
+                  />
+                )}
               </div>
 
               {/* All Contact Methods */}

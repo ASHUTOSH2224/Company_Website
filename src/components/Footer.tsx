@@ -80,7 +80,7 @@ export const Footer: React.FC<FooterProps> = ({ currentPage, setCurrentPage }) =
           </div>
 
           {/* Services */}
-          <div className="space-y-4">
+            <div className="space-y-4">
             <h3 className="text-white font-semibold">Services</h3>
             <nav className="space-y-3">
               {services.map((service, index) => (
@@ -131,7 +131,7 @@ export const Footer: React.FC<FooterProps> = ({ currentPage, setCurrentPage }) =
         <div className="py-6 border-t border-[#333] flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-body-sm">
             © 2025 Upstraiq. All rights reserved.
-          </p>
+            </p>
           <div className="flex items-center gap-6">
             <button className="nav-link">Privacy Policy</button>
             <button className="nav-link">Terms of Service</button>

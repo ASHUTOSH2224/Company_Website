@@ -13,6 +13,7 @@ import {
   Mail,
   Globe
 } from 'lucide-react';
+import CalendlyButton from './CalendlyButton';
 
 interface Message {
   id: string;
@@ -75,6 +76,8 @@ const ChatBot: React.FC<ChatBotProps> = ({ onContactClick }) => {
       setMessages([getInitialMessage()]);
       setHasGreeted(true);
     }
+
+
   }, [isOpen, hasGreeted]);
 
   useEffect(() => {
@@ -116,7 +119,7 @@ const ChatBot: React.FC<ChatBotProps> = ({ onContactClick }) => {
         newStep = 'industry-selection';
         break;
       case 'contact':
-        responseText = "I'd be happy to help you get in touch with our team!\n\n📧 **Email**: info@upstraiq.com\n📞 **Phone**: +1 (555) 123-4567\n🌐 **Website**: Contact form available\n\n🚀 **Next Steps**:\n• Schedule a free consultation\n• Discuss your project requirements\n• Receive a custom proposal\n\nWould you like me to help you with anything specific before connecting with our team?";
+        responseText = "I'd be happy to help you get in touch with our team!\n\n📧 **Email**: info@upstraiq.com\n📞 **Phone**: +1 (555) 123-4567\n📅 **Schedule a Call**: Click the button below to open calendar\n🌐 **Website**: Contact form available\n\n🚀 **Next Steps**:\n• Schedule a free 30-minute consultation\n• Discuss your project requirements\n• Receive a custom proposal\n\nWould you like me to help you with anything specific before connecting with our team?";
         break;
     }
 
@@ -400,7 +403,7 @@ const ChatBot: React.FC<ChatBotProps> = ({ onContactClick }) => {
 
     // General questions about getting started
     if (lowerMessage.includes('get started') || lowerMessage.includes('begin') || lowerMessage.includes('start') || lowerMessage.includes('next steps')) {
-      return `Great! Here's how to get started with your AI transformation:\n\n🎯 **Step 1: Discovery Call** (Free - 30 minutes)\n• Understand your business goals and challenges\n• Identify opportunities for AI integration\n• Discuss your technical requirements\n• Provide initial recommendations\n\n📋 **Step 2: Custom Proposal** (Free - 2-3 days)\n• Detailed project scope and timeline\n• Technology recommendations\n• Transparent pricing breakdown\n• Success metrics and ROI projections\n\n🚀 **Step 3: Project Kickoff** (1 week)\n• Finalize requirements and specifications\n• Set up development environment\n• Establish communication channels\n• Begin development sprint planning\n\n📞 **Ready to Start?**\n• Use **Contact mode** below for immediate connection\n• Email: info@upstraiq.com\n• Phone: +1 (555) 123-4567\n\n💡 **Or continue exploring** our services and case studies to learn more!`;
+      return `Great! Here's how to get started with your AI transformation:\n\n🎯 **Step 1: Discovery Call** (Free - 30 minutes)\n• Understand your business goals and challenges\n• Identify opportunities for AI integration\n• Discuss your technical requirements\n• Provide initial recommendations\n\n📋 **Step 2: Custom Proposal** (Free - 2-3 days)\n• Detailed project scope and timeline\n• Technology recommendations\n• Transparent pricing breakdown\n• Success metrics and ROI projections\n\n🚀 **Step 3: Project Kickoff** (1 week)\n• Finalize requirements and specifications\n• Set up development environment\n• Establish communication channels\n• Begin development sprint planning\n\n📞 **Ready to Start?**\n• **Schedule a Call**: Click **Contact mode** below to open calendar popup\n• Email: info@upstraiq.com\n• Phone: +1 (555) 123-4567\n• Use **Contact mode** below for immediate connection\n\n💡 **Or continue exploring** our services and case studies to learn more!`;
     }
 
             // Context-aware fallback for Services mode
@@ -481,6 +484,8 @@ const ChatBot: React.FC<ChatBotProps> = ({ onContactClick }) => {
   const toggleMinimize = () => {
     setIsMinimized(!isMinimized);
   };
+
+
 
   const renderIndustrySelector = () => (
     <div className="grid grid-cols-2 gap-2 mt-3">
@@ -603,6 +608,19 @@ const ChatBot: React.FC<ChatBotProps> = ({ onContactClick }) => {
                       }`}
                     >
                       <div className="text-sm whitespace-pre-line">{message.text}</div>
+                      
+                      {/* Show Calendly button for contact mode messages */}
+                      {message.isBot && chatState.mode === 'contact' && message.text.includes('Schedule a Call') && (
+                        <div className="mt-3">
+                          <CalendlyButton 
+                            variant="compact"
+                            className="w-full bg-gradient-to-r from-[#0070f3] to-[#50e3c2] text-white px-4 py-2 rounded-lg font-medium hover:scale-105 transition-all duration-200"
+                            buttonText="Schedule Your Call"
+                            showIcon={true}
+                          />
+                        </div>
+                      )}
+                      
                       <div className="text-xs opacity-60 mt-1">
                         {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                       </div>

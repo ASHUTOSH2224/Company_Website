@@ -38,15 +38,15 @@ html.dark {
 }
 
 @layer base {
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  body {
+html {
+  scroll-behavior: smooth;
+}
+
+body {
     @apply bg-black text-white font-sans antialiased;
     font-family: 'Space Grotesk', 'Inter', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   }
 }
 
@@ -383,7 +383,7 @@ html.dark {
 
 .animate-gradient {
   animation: gradient-shift 3s ease infinite;
-}
+  }
 
 .animate-gradient-shift {
   animation: gradient-shift 8s ease-in-out infinite;
@@ -637,7 +637,7 @@ html.dark {
 @keyframes shimmer {
   0% {
     background-position: -200% 0;
-  }
+}
   100% {
     background-position: 200% 0;
   }
@@ -673,4 +673,4 @@ html.dark {
   100% {
     background-position: 50px 50px;
   }
-} 
+}

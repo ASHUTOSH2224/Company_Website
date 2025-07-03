@@ -83,7 +83,7 @@ export const Services: React.FC<ServicesProps> = ({ onContactClick }) => {
     setCurrentSlide(0);
   }, [cardsPerView]);
 
-  const services = [
+const services = [
     {
       icon: Bot,
       title: "AI Marketing Automation",
@@ -119,8 +119,8 @@ export const Services: React.FC<ServicesProps> = ({ onContactClick }) => {
       features: ["Real-time Features", "Cloud Integration", "Scalable Architecture"],
       color: "from-[#50e3c2] to-[#0070f3]"
     },
-    {
-      icon: Smartphone,
+  {
+    icon: Smartphone,
       title: "Mobile Apps",
       description: "Native and cross-platform mobile applications for iOS and Android.",
       features: ["Cross-platform Development", "Native Performance", "App Store Optimization"],
@@ -302,7 +302,7 @@ export const Services: React.FC<ServicesProps> = ({ onContactClick }) => {
             >
               <ChevronRight className="w-7 h-7 text-white" />
             </button>
-          </div>
+                </div>
 
           {/* Carousel Viewport */}
           <div className="overflow-hidden sm:mx-8 lg:mx-16">
@@ -357,12 +357,12 @@ export const Services: React.FC<ServicesProps> = ({ onContactClick }) => {
                         {/* Service Content */}
                         <div className="flex-1 space-y-4 lg:space-y-6">
                           <h3 className="text-xl lg:text-2xl font-bold text-white group-hover:text-[#50e3c2] transition-all duration-300 leading-tight">
-                            {service.title}
-                          </h3>
-                          
+                  {service.title}
+                </h3>
+                
                           <p className="text-base lg:text-lg text-[#888] group-hover:text-[#aaa] transition-colors duration-300 leading-relaxed">
-                            {service.description}
-                          </p>
+                  {service.description}
+                </p>
 
                           {/* Features List */}
                           <div className={`space-y-2 lg:space-y-3 transition-all duration-500 ${
@@ -408,9 +408,9 @@ export const Services: React.FC<ServicesProps> = ({ onContactClick }) => {
                   </div>
                 );
               })}
-            </div>
-          </div>
-
+                </div>
+              </div>
+              
           {/* Navigation Dots */}
           <div className="flex justify-center gap-2 lg:gap-3 mt-8 lg:mt-12">
             {Array.from({ length: maxSlides + 1 }).map((_, index) => (

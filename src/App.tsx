@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
+import { WhatWeBuild } from './components/WhatWeBuild';
 import { Services } from './components/Services';
 import { WhyChooseUs } from './components/WhyChooseUs';
 import { Footer } from './components/Footer';
@@ -42,6 +43,7 @@ function App() {
         return (
           <>
             <Hero onContactClick={handleContactClick} />
+            <WhatWeBuild onContactClick={handleContactClick} />
             <Services onContactClick={handleContactClick} />
             <WhyChooseUs onContactClick={handleContactClick} />
           </>

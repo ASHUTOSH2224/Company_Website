@@ -191,44 +191,49 @@ export const Services: React.FC<ServicesProps> = ({ onContactClick }) => {
 
   return (
     <section 
-      className="section-padding relative"
+      className="py-16 lg:py-24 relative"
       onMouseEnter={() => setIsAutoPlaying(false)}
       onMouseLeave={() => setIsAutoPlaying(true)}
     >
       <div className="container-custom" ref={containerRef}>
         {/* Section Header */}
-        <div className={`text-center mb-12 lg:mb-16 transition-all duration-1000 ${
+        <div className={`text-center mb-16 lg:mb-20 transition-all duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
-          <h2 className="heading-lg mb-4 lg:mb-6">
+          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full border-2 border-[#333] bg-black backdrop-blur-sm mb-8 lg:mb-12">
+            <Brain className="w-5 h-5 text-[#0070f3]" />
+            <span className="text-base text-[#888] font-medium">Our Services</span>
+          </div>
+          
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 lg:mb-8">
             Comprehensive <span className="gradient-text-accent">AI Solutions</span>
           </h2>
-          <p className="text-body max-w-3xl mx-auto mb-6 lg:mb-8 px-4">
+          <p className="text-xl lg:text-2xl text-[#888] max-w-4xl mx-auto mb-12 lg:mb-16 leading-relaxed">
             From intelligent marketing automation to cutting-edge blockchain applications, 
             we deliver complete digital transformation solutions powered by artificial intelligence.
           </p>
 
           {/* Auto-play Control & Cards Per View Indicator */}
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-6 lg:mb-8">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-8 lg:mb-12">
             <button
               onClick={toggleAutoPlay}
-              className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-all duration-300 ${
+              className={`flex items-center gap-3 px-6 py-3 rounded-xl border-2 transition-all duration-300 ${
                 isAutoPlaying 
-                  ? 'border-[#0070f3] bg-[#0070f3]/20 text-[#0070f3]' 
-                  : 'border-[#333] bg-[var(--card-bg)] text-[#888] hover:text-white hover:border-[#0070f3]'
+                  ? 'border-[#0070f3] bg-[#0070f3]/20 text-[#0070f3] shadow-lg shadow-[#0070f3]/20' 
+                  : 'border-[#333] bg-black text-[#888] hover:text-white hover:border-[#0070f3] hover:shadow-lg hover:shadow-[#0070f3]/20'
               }`}
             >
-              {isAutoPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
-              <span className="text-sm font-medium">
+              {isAutoPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
+              <span className="text-base font-semibold">
                 {isAutoPlaying ? 'Pause' : 'Play'} Auto-scroll
               </span>
             </button>
             
             {/* Responsive indicator */}
-            <div className="text-xs text-[#666] bg-[var(--card-bg)] px-3 py-1 rounded-full border border-[#333]">
-              <span className="hidden lg:inline">Showing {cardsPerView} of {services.length}</span>
+            <div className="text-sm text-[#666] bg-black px-4 py-2 rounded-xl border-2 border-[#333]">
+              <span className="hidden lg:inline">Showing {cardsPerView} of {services.length} Services</span>
               <span className="hidden md:inline lg:hidden">Showing {cardsPerView} of {services.length}</span>
-              <span className="md:hidden">Showing {cardsPerView} of {services.length}</span>
+              <span className="md:hidden">{cardsPerView} / {services.length}</span>
             </div>
           </div>
         </div>
@@ -239,55 +244,63 @@ export const Services: React.FC<ServicesProps> = ({ onContactClick }) => {
           <button
             onClick={prevSlide}
             disabled={currentSlide === 0}
-            className={`absolute left-0 lg:-left-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 lg:w-14 lg:h-14 rounded-full border border-[#333] bg-black/80 backdrop-blur-sm flex items-center justify-center transition-all duration-300 ${
+            className={`absolute left-0 lg:-left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 lg:w-16 lg:h-16 rounded-2xl border-2 border-[#333] bg-black backdrop-blur-sm flex items-center justify-center transition-all duration-300 ${
               currentSlide === 0 
                 ? 'opacity-30 cursor-not-allowed' 
-                : 'hover:border-[#0070f3] hover:bg-[#0070f3]/20 hover:scale-110 shadow-lg shadow-[#0070f3]/20'
+                : 'hover:border-[#0070f3] hover:bg-[#0070f3]/20 hover:scale-110 shadow-xl shadow-[#0070f3]/20'
             } hidden sm:flex`}
           >
-            <ChevronLeft className="w-5 h-5 lg:w-7 lg:h-7 text-white" />
+            <ChevronLeft className="w-6 h-6 lg:w-8 lg:h-8 text-white" />
           </button>
 
           <button
             onClick={nextSlide}
             disabled={currentSlide >= maxSlides}
-            className={`absolute right-0 lg:-right-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 lg:w-14 lg:h-14 rounded-full border border-[#333] bg-black/80 backdrop-blur-sm flex items-center justify-center transition-all duration-300 ${
+            className={`absolute right-0 lg:-right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 lg:w-16 lg:h-16 rounded-2xl border-2 border-[#333] bg-black backdrop-blur-sm flex items-center justify-center transition-all duration-300 ${
               currentSlide >= maxSlides
                 ? 'opacity-30 cursor-not-allowed' 
-                : 'hover:border-[#0070f3] hover:bg-[#0070f3]/20 hover:scale-110 shadow-lg shadow-[#0070f3]/20'
+                : 'hover:border-[#0070f3] hover:bg-[#0070f3]/20 hover:scale-110 shadow-xl shadow-[#0070f3]/20'
             } hidden sm:flex`}
           >
-            <ChevronRight className="w-5 h-5 lg:w-7 lg:h-7 text-white" />
+            <ChevronRight className="w-6 h-6 lg:w-8 lg:h-8 text-white" />
           </button>
 
           {/* Mobile Navigation Arrows */}
-          <div className="flex justify-between items-center mb-6 sm:hidden">
+          <div className="flex justify-between items-center mb-8 sm:hidden">
             <button
               onClick={prevSlide}
               disabled={currentSlide === 0}
-              className={`w-12 h-12 rounded-full border border-[#333] bg-black/80 backdrop-blur-sm flex items-center justify-center transition-all duration-300 ${
+              className={`w-14 h-14 rounded-2xl border-2 border-[#333] bg-black backdrop-blur-sm flex items-center justify-center transition-all duration-300 ${
                 currentSlide === 0 
                   ? 'opacity-30 cursor-not-allowed' 
-                  : 'hover:border-[#0070f3] hover:bg-[#0070f3]/20'
+                  : 'hover:border-[#0070f3] hover:bg-[#0070f3]/20 hover:scale-105'
               }`}
             >
-              <ChevronLeft className="w-6 h-6 text-white" />
+              <ChevronLeft className="w-7 h-7 text-white" />
             </button>
 
-            <div className="text-sm text-[#888]">
-              {currentSlide + 1} / {maxSlides + 1}
+            <div className="flex flex-col items-center gap-2">
+              <div className="text-base font-semibold text-white">
+                {currentSlide + 1} / {maxSlides + 1}
+              </div>
+              <div className="w-16 h-1 bg-[#333] rounded-full overflow-hidden">
+                <div 
+                  className="h-full bg-gradient-to-r from-[#0070f3] to-[#50e3c2] rounded-full transition-all duration-300"
+                  style={{ width: `${((currentSlide + 1) / (maxSlides + 1)) * 100}%` }}
+                />
+              </div>
             </div>
 
             <button
               onClick={nextSlide}
               disabled={currentSlide >= maxSlides}
-              className={`w-12 h-12 rounded-full border border-[#333] bg-black/80 backdrop-blur-sm flex items-center justify-center transition-all duration-300 ${
+              className={`w-14 h-14 rounded-2xl border-2 border-[#333] bg-black backdrop-blur-sm flex items-center justify-center transition-all duration-300 ${
                 currentSlide >= maxSlides
                   ? 'opacity-30 cursor-not-allowed' 
-                  : 'hover:border-[#0070f3] hover:bg-[#0070f3]/20'
+                  : 'hover:border-[#0070f3] hover:bg-[#0070f3]/20 hover:scale-105'
               }`}
             >
-              <ChevronRight className="w-6 h-6 text-white" />
+              <ChevronRight className="w-7 h-7 text-white" />
             </button>
           </div>
 
@@ -314,7 +327,7 @@ export const Services: React.FC<ServicesProps> = ({ onContactClick }) => {
                     onMouseLeave={() => setHoveredService(null)}
                   >
                     {/* Service Card */}
-                    <div className={`service-card group relative overflow-hidden h-80 lg:h-96 hover:transform hover:-translate-y-2 lg:hover:-translate-y-6 hover:scale-105 transition-all duration-700 ${
+                    <div className={`bg-black border-2 border-[#333] rounded-2xl p-6 lg:p-8 group relative overflow-hidden h-96 lg:h-[28rem] hover:transform hover:-translate-y-3 hover:scale-105 transition-all duration-700 hover:border-[#0070f3] hover:shadow-2xl hover:shadow-[#0070f3]/20 ${
                       isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                     }`}>
                       {/* Animated background glow */}
@@ -326,57 +339,57 @@ export const Services: React.FC<ServicesProps> = ({ onContactClick }) => {
                       {/* Shimmer effect */}
                       <div className="absolute inset-0 shimmer-effect opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                       
-                      <div className="relative z-10 p-4 lg:p-6 h-full flex flex-col">
+                      <div className="relative z-10 h-full flex flex-col">
                         {/* Service Icon */}
-                        <div className="relative w-10 h-10 lg:w-12 lg:h-12 mb-4 lg:mb-6">
+                        <div className="relative w-16 h-16 lg:w-20 lg:h-20 mb-6 lg:mb-8">
                           {/* Pulsing background */}
-                          <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-20 rounded-lg group-hover:opacity-40 transition-opacity duration-500 animate-pulse`}></div>
+                          <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-20 rounded-2xl group-hover:opacity-40 transition-opacity duration-500 animate-pulse`}></div>
                           
                           {/* Main icon container */}
-                          <div className={`relative w-full h-full bg-gradient-to-br ${service.color} rounded-lg flex items-center justify-center group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 shadow-lg group-hover:shadow-[#0070f3]/25`}>
-                            <Icon size={20} className="lg:w-6 lg:h-6 text-white group-hover:animate-bounce" />
+                          <div className={`relative w-full h-full bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center group-hover:scale-125 group-hover:rotate-12 transition-all duration-500 shadow-xl group-hover:shadow-[#0070f3]/30`}>
+                            <Icon size={28} className="lg:w-10 lg:h-10 text-white group-hover:animate-bounce" />
                           </div>
                           
                           {/* Floating ring effect */}
-                          <div className={`absolute inset-0 border-2 border-[#0070f3] rounded-lg opacity-0 group-hover:opacity-100 group-hover:scale-150 transition-all duration-700 animate-ping`}></div>
+                          <div className={`absolute inset-0 border-2 border-[#0070f3] rounded-2xl opacity-0 group-hover:opacity-100 group-hover:scale-150 transition-all duration-700 animate-ping`}></div>
                         </div>
 
                         {/* Service Content */}
-                        <div className="flex-1 space-y-3 lg:space-y-4">
-                          <h3 className="text-lg lg:text-xl font-semibold text-white group-hover:text-[#50e3c2] transition-all duration-300 leading-tight">
+                        <div className="flex-1 space-y-4 lg:space-y-6">
+                          <h3 className="text-xl lg:text-2xl font-bold text-white group-hover:text-[#50e3c2] transition-all duration-300 leading-tight">
                             {service.title}
                           </h3>
                           
-                          <p className="text-sm lg:text-base text-[#888] group-hover:text-[#aaa] transition-colors duration-300 leading-relaxed">
+                          <p className="text-base lg:text-lg text-[#888] group-hover:text-[#aaa] transition-colors duration-300 leading-relaxed">
                             {service.description}
                           </p>
 
                           {/* Features List */}
-                          <div className={`space-y-1 lg:space-y-2 transition-all duration-500 ${
-                            isHovered ? 'opacity-100 max-h-32 translate-y-0' : 'opacity-60 max-h-20 translate-y-1'
+                          <div className={`space-y-2 lg:space-y-3 transition-all duration-500 ${
+                            isHovered ? 'opacity-100 max-h-40 translate-y-0' : 'opacity-70 max-h-32 translate-y-1'
                           }`}>
                             {service.features.map((feature, featureIndex) => (
                               <div 
                                 key={featureIndex} 
-                                className="flex items-center gap-2 transition-all duration-300 hover:translate-x-2"
+                                className="flex items-center gap-3 transition-all duration-300 hover:translate-x-2"
                                 style={{ animationDelay: `${featureIndex * 100}ms` }}
                               >
-                                <div className="w-1.5 h-1.5 bg-[#0070f3] rounded-full group-hover:animate-ping group-hover:bg-[#50e3c2] transition-colors duration-300"></div>
-                                <span className="text-xs lg:text-sm text-[#666] group-hover:text-[#50e3c2] transition-colors duration-300">{feature}</span>
+                                <div className="w-2 h-2 bg-[#0070f3] rounded-full group-hover:animate-ping group-hover:bg-[#50e3c2] transition-colors duration-300 flex-shrink-0"></div>
+                                <span className="text-sm lg:text-base text-[#666] group-hover:text-[#50e3c2] transition-colors duration-300 font-medium">{feature}</span>
                               </div>
                             ))}
                           </div>
 
                           {/* Learn More Button */}
-                          <div className={`pt-3 lg:pt-4 transition-all duration-500 ${
+                          <div className={`pt-4 lg:pt-6 transition-all duration-500 ${
                             isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
                           }`}>
                             <button 
                               onClick={onContactClick}
-                              className="text-[#0070f3] text-sm font-medium flex items-center gap-2 hover:gap-3 hover:text-[#50e3c2] transition-all duration-300 group/btn"
+                              className="bg-gradient-to-r from-[#0070f3] to-[#50e3c2] text-white px-4 py-2 rounded-xl text-sm lg:text-base font-semibold hover:scale-105 transition-all duration-300 inline-flex items-center gap-2 group/btn shadow-lg"
                             >
                               Learn More
-                              <ArrowRight size={14} className="group-hover/btn:translate-x-1 group-hover/btn:scale-110 transition-transform duration-300" />
+                              <ArrowRight size={16} className="group-hover/btn:translate-x-1 group-hover/btn:scale-110 transition-transform duration-300" />
                             </button>
                           </div>
                         </div>
@@ -436,23 +449,25 @@ export const Services: React.FC<ServicesProps> = ({ onContactClick }) => {
         </div>
 
         {/* CTA Section */}
-        <div className={`text-center mt-12 lg:mt-16 transition-all duration-1000 delay-500 ${
+        <div className={`text-center mt-16 lg:mt-24 transition-all duration-1000 delay-500 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
-          <h3 className="text-xl lg:text-2xl font-bold mb-4">
-            Ready to Transform Your Business?
-          </h3>
-          <p className="text-sm lg:text-base text-[#888] mb-6 lg:mb-8 max-w-2xl mx-auto px-4">
-            Let's discuss how our AI-powered solutions can revolutionize your operations 
-            and drive unprecedented growth.
-          </p>
-          <button 
-            onClick={onContactClick}
-            className="btn-primary"
-          >
-            Start Your AI Journey
-            <ArrowRight size={16} />
-          </button>
+          <div className="bg-black border border-[#333] rounded-3xl p-12 lg:p-16 hover:border-[#0070f3] transition-colors duration-300">
+            <h3 className="text-3xl lg:text-4xl xl:text-5xl font-bold mb-6 lg:mb-8">
+              Ready to Transform Your <span className="gradient-text-accent">Business?</span>
+            </h3>
+            <p className="text-lg lg:text-xl text-[#888] mb-10 lg:mb-12 max-w-3xl mx-auto leading-relaxed">
+              Let's discuss how our AI-powered solutions can revolutionize your operations 
+              and drive unprecedented growth.
+            </p>
+            <button 
+              onClick={onContactClick}
+              className="bg-gradient-to-r from-[#0070f3] to-[#50e3c2] text-white px-10 lg:px-12 py-4 lg:py-5 rounded-2xl text-lg lg:text-xl font-semibold hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl inline-flex items-center gap-3 group"
+            >
+              Start Your AI Journey
+              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+            </button>
+          </div>
         </div>
       </div>
     </section>

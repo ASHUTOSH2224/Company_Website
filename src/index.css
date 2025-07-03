@@ -135,7 +135,7 @@ html.dark {
 
 /* Container */
 .container-custom {
-  @apply max-w-6xl mx-auto px-6;
+  @apply max-w-6xl mx-auto px-4;
 }
 
 .section-padding {
@@ -386,7 +386,7 @@ html.dark {
   }
   
   .container-custom {
-    @apply px-4;
+    @apply px-2;
   }
   
   .section-padding {

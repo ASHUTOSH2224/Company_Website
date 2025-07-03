@@ -9,9 +9,11 @@ import { About } from './pages/About';
 import { Contact } from './pages/Contact';
 import OurWork from './pages/OurWork';
 import Company from './pages/Company';
+import ServiceDetails from './pages/ServiceDetails';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
+  const [selectedServiceId, setSelectedServiceId] = useState<string>('');
 
   // Scroll to top when page changes
   useEffect(() => {
@@ -20,6 +22,15 @@ function App() {
 
   const handleContactClick = () => {
     setCurrentPage('contact');
+  };
+
+  const handleServiceLearnMore = (serviceId: string) => {
+    setSelectedServiceId(serviceId);
+    setCurrentPage('service-details');
+  };
+
+  const handleBackToServices = () => {
+    setCurrentPage('services');
   };
 
   const renderPage = () => {
@@ -35,16 +46,25 @@ function App() {
       case 'services':
         return (
           <div>
-            <Services onContactClick={handleContactClick} />
+            <Services onContactClick={handleContactClick} onServiceLearnMore={handleServiceLearnMore} />
             <WhyChooseUs onContactClick={handleContactClick} />
           </div>
+        );
+      case 'service-details':
+        return (
+          <ServiceDetails 
+            currentPage={currentPage}
+            serviceId={selectedServiceId}
+            onContactClick={handleContactClick}
+            onBack={handleBackToServices}
+          />
         );
       default:
         return (
           <>
             <Hero onContactClick={handleContactClick} />
             <WhatWeBuild onContactClick={handleContactClick} />
-            <Services onContactClick={handleContactClick} />
+            <Services onContactClick={handleContactClick} onServiceLearnMore={handleServiceLearnMore} />
             <WhyChooseUs onContactClick={handleContactClick} />
           </>
         );

@@ -4,8 +4,46 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'display': ['SF Pro Display', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-        'body': ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        'sans': [
+          '-apple-system',
+          'BlinkMacSystemFont', 
+          'SF Pro Display',
+          'SF Pro Text',
+          'San Francisco',
+          'Helvetica Neue',
+          'Inter',
+          'system-ui',
+          'sans-serif'
+        ],
+        'display': [
+          'SF Pro Display',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'San Francisco',
+          'Helvetica Neue',
+          'Inter',
+          'system-ui',
+          'sans-serif'
+        ],
+        'text': [
+          'SF Pro Text',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'San Francisco',
+          'Helvetica Neue',
+          'Inter',
+          'system-ui',
+          'sans-serif'
+        ],
+        'mono': [
+          'SF Mono',
+          'JetBrains Mono',
+          'SF Pro Text',
+          '-apple-system',
+          'Consolas',
+          'Monaco',
+          'monospace'
+        ],
       },
       animation: {
         'fade-in-up': 'fadeInUp 0.8s ease-out forwards',

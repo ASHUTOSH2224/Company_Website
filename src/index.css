@@ -1,3 +1,5 @@
+/* San Francisco Font - System fonts for best performance and native feel */
+/* Import fallback fonts for non-Apple devices */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
@@ -44,48 +46,233 @@ html {
 
 body {
     @apply bg-black text-white font-sans antialiased;
-    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    font-family: 
+      -apple-system, 
+      BlinkMacSystemFont, 
+      'SF Pro Display', 
+      'SF Pro Text', 
+      'San Francisco', 
+      'Helvetica Neue', 
+      'Inter', 
+      'Space Grotesk', 
+      system-ui, 
+      sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
   }
+
+/* Apply San Francisco to all text elements */
+*, *::before, *::after {
+  font-family: inherit;
 }
 
-/* Trendy Font Classes */
+/* Specific font weights for San Francisco */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 
+    'SF Pro Display', 
+    -apple-system, 
+    BlinkMacSystemFont, 
+    'San Francisco', 
+    'Helvetica Neue', 
+    'Inter', 
+    system-ui, 
+    sans-serif;
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+p, span, div, a, button, input, textarea {
+  font-family: 
+    'SF Pro Text', 
+    -apple-system, 
+    BlinkMacSystemFont, 
+    'San Francisco', 
+    'Helvetica Neue', 
+    'Inter', 
+    system-ui, 
+    sans-serif;
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+}
+}
+
+/* San Francisco Font Classes */
+.font-sf {
+  font-family: 
+    -apple-system, 
+    BlinkMacSystemFont, 
+    'SF Pro Display', 
+    'SF Pro Text', 
+    'San Francisco', 
+    'Helvetica Neue', 
+    'Inter', 
+    system-ui, 
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+}
+
+.font-sf-display {
+  font-family: 
+    'SF Pro Display', 
+    -apple-system, 
+    BlinkMacSystemFont, 
+    'San Francisco', 
+    'Helvetica Neue', 
+    'Inter', 
+    system-ui, 
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+  letter-spacing: -0.01em;
+}
+
+.font-sf-text {
+  font-family: 
+    'SF Pro Text', 
+    -apple-system, 
+    BlinkMacSystemFont, 
+    'San Francisco', 
+    'Helvetica Neue', 
+    'Inter', 
+    system-ui, 
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+}
+
+/* San Francisco font weight variations */
+.font-sf-ultralight {
+  font-weight: 100;
+}
+
+.font-sf-thin {
+  font-weight: 200;
+}
+
+.font-sf-light {
+  font-weight: 300;
+}
+
+.font-sf-regular {
+  font-weight: 400;
+}
+
+.font-sf-medium {
+  font-weight: 500;
+}
+
+.font-sf-semibold {
+  font-weight: 600;
+}
+
+.font-sf-bold {
+  font-weight: 700;
+}
+
+.font-sf-heavy {
+  font-weight: 800;
+}
+
+.font-sf-black {
+  font-weight: 900;
+}
+
+/* Legacy Font Classes (for compatibility) */
 .font-space {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 
+    -apple-system, 
+    BlinkMacSystemFont, 
+    'SF Pro Display', 
+    'Space Grotesk', 
+    'Helvetica Neue', 
+    system-ui, 
+    sans-serif;
 }
 
 .font-orbitron {
-  font-family: 'Orbitron', monospace;
+  font-family: 'Orbitron', 'SF Pro Display', -apple-system, monospace;
 }
 
 .font-mono {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'SF Mono', 'JetBrains Mono', 'SF Pro Text', -apple-system, monospace;
 }
 
-/* Typography */
+/* Typography with San Francisco */
 .heading-xl {
-  @apply text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-none;
+  @apply text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-none font-display;
+  font-family: 
+    'SF Pro Display', 
+    -apple-system, 
+    BlinkMacSystemFont, 
+    'San Francisco', 
+    'Helvetica Neue', 
+    system-ui, 
+    sans-serif;
 }
 
 .heading-lg {
-  @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight;
+  @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight font-display;
+  font-family: 
+    'SF Pro Display', 
+    -apple-system, 
+    BlinkMacSystemFont, 
+    'San Francisco', 
+    'Helvetica Neue', 
+    system-ui, 
+    sans-serif;
 }
 
 .heading-md {
-  @apply text-2xl md:text-3xl font-bold tracking-tight;
+  @apply text-2xl md:text-3xl font-bold tracking-tight font-display;
+  font-family: 
+    'SF Pro Display', 
+    -apple-system, 
+    BlinkMacSystemFont, 
+    'San Francisco', 
+    'Helvetica Neue', 
+    system-ui, 
+    sans-serif;
 }
 
 .heading-sm {
-  @apply text-xl md:text-2xl font-semibold;
+  @apply text-xl md:text-2xl font-semibold font-display;
+  font-family: 
+    'SF Pro Display', 
+    -apple-system, 
+    BlinkMacSystemFont, 
+    'San Francisco', 
+    'Helvetica Neue', 
+    system-ui, 
+    sans-serif;
 }
 
 .text-body {
-  @apply text-[#888] text-lg leading-relaxed;
+  @apply text-[#888] text-lg leading-relaxed font-text;
+  font-family: 
+    'SF Pro Text', 
+    -apple-system, 
+    BlinkMacSystemFont, 
+    'San Francisco', 
+    'Helvetica Neue', 
+    system-ui, 
+    sans-serif;
 }
 
 .text-body-sm {
-  @apply text-[#888] text-sm leading-relaxed;
+  @apply text-[#888] text-sm leading-relaxed font-text;
+  font-family: 
+    'SF Pro Text', 
+    -apple-system, 
+    BlinkMacSystemFont, 
+    'San Francisco', 
+    'Helvetica Neue', 
+    system-ui, 
+    sans-serif;
 }
 
 /* Line Clamping */
@@ -103,17 +290,50 @@ body {
   overflow: hidden;
 }
 
-/* Button Styles */
+/* Button Styles with San Francisco */
 .btn-primary {
   @apply bg-white text-black px-6 py-3 rounded-md font-medium text-sm hover:opacity-90 transition-all duration-200 inline-flex items-center gap-2;
+  font-family: 
+    'SF Pro Text', 
+    -apple-system, 
+    BlinkMacSystemFont, 
+    'San Francisco', 
+    'Helvetica Neue', 
+    system-ui, 
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
 }
 
 .btn-secondary {
   @apply bg-transparent border border-[#333] text-white px-6 py-3 rounded-md font-medium text-sm hover:border-[#666] transition-all duration-200 inline-flex items-center gap-2;
+  font-family: 
+    'SF Pro Text', 
+    -apple-system, 
+    BlinkMacSystemFont, 
+    'San Francisco', 
+    'Helvetica Neue', 
+    system-ui, 
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
 }
 
 .btn-accent {
   @apply bg-[#0070f3] text-white px-6 py-3 rounded-md font-medium text-sm hover:bg-[#0060df] transition-all duration-200 inline-flex items-center gap-2;
+  font-family: 
+    'SF Pro Text', 
+    -apple-system, 
+    BlinkMacSystemFont, 
+    'San Francisco', 
+    'Helvetica Neue', 
+    system-ui, 
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
 }
 
 /* Card Styles */
@@ -136,9 +356,20 @@ body {
   box-shadow: 0 10px 40px rgba(0, 112, 243, 0.1);
 }
 
-/* Navigation */
+/* Navigation with San Francisco */
 .nav-link {
   @apply text-[#888] hover:text-white transition-colors duration-200 text-sm font-medium;
+  font-family: 
+    'SF Pro Text', 
+    -apple-system, 
+    BlinkMacSystemFont, 
+    'San Francisco', 
+    'Helvetica Neue', 
+    system-ui, 
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
 }
 
 .nav-link.active {
@@ -522,6 +753,17 @@ body {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: gradient-shift 4s ease infinite;
+  font-family: 
+    'SF Pro Display', 
+    -apple-system, 
+    BlinkMacSystemFont, 
+    'San Francisco', 
+    'Helvetica Neue', 
+    system-ui, 
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
 }
 
 .gradient-text-accent {
@@ -531,6 +773,17 @@ body {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: gradient-shift 3s ease infinite;
+  font-family: 
+    'SF Pro Display', 
+    -apple-system, 
+    BlinkMacSystemFont, 
+    'San Francisco', 
+    'Helvetica Neue', 
+    system-ui, 
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
 }
 
 .glow-effect {

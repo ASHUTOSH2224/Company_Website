@@ -154,7 +154,7 @@ const Company: React.FC<CompanyProps> = ({ currentPage, onContactClick }) => {
     },
     {
       name: "Nitish Maurya",
-      role: "Head of Product & Delivery",
+      role: "Founder & Head of Product & Delivery",
       image: "https://api.dicebear.com/7.x/thumbs/svg?seed=ananya",
       bio: "Tech-first problem solver with hands-on experience in web, mobile, and backend systems across multiple domains.",
       education: "B.Tech in Computer Science, JSS Banglore",

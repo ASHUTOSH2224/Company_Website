@@ -144,7 +144,7 @@ const Company: React.FC<CompanyProps> = ({ currentPage, onContactClick }) => {
   const founders = [
     {
       name: "Harsh Singh",
-      role: "Co-Founder & CEO",
+      role: "Co-Founder & Head of Software Architecture & Development",
       image: "https://api.dicebear.com/7.x/thumbs/svg?seed=nitish",
       bio: "Dynamic leader with a sharp eye for solving complex business problems through tech automation and scalable digital solutions.",
       education: "B.Tech in Information Technology, IIIT Ranchi",
@@ -154,7 +154,7 @@ const Company: React.FC<CompanyProps> = ({ currentPage, onContactClick }) => {
     },
     {
       name: "Nitish Maurya",
-      role: "Founder & Head of Product & Delivery",
+      role: "Co-Founder & CEO",
       image: "https://api.dicebear.com/7.x/thumbs/svg?seed=ananya",
       bio: "Tech-first problem solver with hands-on experience in web, mobile, and backend systems across multiple domains.",
       education: "B.Tech in Computer Science, JSS Banglore",

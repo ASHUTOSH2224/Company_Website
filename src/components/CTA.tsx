@@ -163,7 +163,10 @@ export const CTA: React.FC<CTAProps> = ({ onContactClick, currentPage = 'home' }
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
                 
-                <button className="btn-secondary">
+                <button 
+                  onClick={onContactClick}
+                  className="btn-secondary"
+                >
                   <Calendar className="w-4 h-4" />
                   <span>Book a Demo</span>
                 </button>

@@ -12,6 +12,9 @@ import OurWork from './pages/OurWork';
 import Company from './pages/Company';
 import ServiceDetails from './pages/ServiceDetails';
 import CaseStudies from './pages/CaseStudies';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
+import CookiePolicy from './pages/CookiePolicy';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -41,6 +44,14 @@ function App() {
 
   const handleBackToHome = () => {
     setCurrentPage('home');
+  };
+
+  const handleBackToFooter = () => {
+    setCurrentPage('home');
+  };
+
+  const handleServicesClick = () => {
+    setCurrentPage('services');
   };
 
   const renderPage = () => {
@@ -77,10 +88,31 @@ function App() {
             onBack={handleBackToHome}
           />
         );
+      case 'privacy-policy':
+        return (
+          <PrivacyPolicy 
+            currentPage={currentPage}
+            onBack={handleBackToFooter}
+          />
+        );
+      case 'terms-of-service':
+        return (
+          <TermsOfService 
+            currentPage={currentPage}
+            onBack={handleBackToFooter}
+          />
+        );
+      case 'cookie-policy':
+        return (
+          <CookiePolicy 
+            currentPage={currentPage}
+            onBack={handleBackToFooter}
+          />
+        );
       default:
         return (
           <>
-            <Hero onContactClick={handleContactClick} />
+            <Hero onContactClick={handleContactClick} onServicesClick={handleServicesClick} />
             <WhatWeBuild onContactClick={handleContactClick} />
             <Services onContactClick={handleContactClick} onServiceLearnMore={handleServiceLearnMore} onViewCaseStudies={handleViewCaseStudies} />
             <WhyChooseUs onContactClick={handleContactClick} />

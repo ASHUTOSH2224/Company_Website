@@ -143,36 +143,36 @@ const Company: React.FC<CompanyProps> = ({ currentPage, onContactClick }) => {
 
   const founders = [
     {
-      name: "Nitish Maurya",
+      name: "Harsh Singh",
       role: "Co-Founder & CEO",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
-      bio: "Visionary leader passionate about making AI accessible to every business and driving innovation.",
-      education: "Computer Science Engineering",
-      experience: "5+ years in AI/ML",
-      focus: "Product Strategy & AI Research",
-      quote: "The best AI is invisible AI."
+      image: "https://api.dicebear.com/7.x/thumbs/svg?seed=nitish",
+      bio: "Dynamic leader with a sharp eye for solving complex business problems through tech automation and scalable digital solutions.",
+      education: "B.Tech in Information Technology, IIIT Ranchi",
+      experience: "2+ years in Business Automation & Client Solutions",
+      focus: "Growth Strategy, Client Relations & Business Automation",
+      quote: "Great service starts with listening, scales with innovation."
     },
     {
       name: "Nitish Maurya",
+      role: "Head of Product & Delivery",
+      image: "https://api.dicebear.com/7.x/thumbs/svg?seed=ananya",
+      bio: "Tech-first problem solver with hands-on experience in web, mobile, and backend systems across multiple domains.",
+      education: "B.Tech in Computer Science, JSS Banglore",
+      experience: "3+ years in Full-Stack Development & Automation",
+      focus: "Project Execution, UX Strategy & Client Success",
+      quote: "On-time delivery and quality should never be a trade-off."
+    },
+    {
+      name: "Ashutosh",
       role: "Co-Founder & CTO",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b550?w=400&h=400&fit=crop&crop=face",
-      bio: "Full-stack architect and technical innovator who believes in building simple, powerful solutions.",
-      education: "Computer Science Engineering",
-      experience: "4+ years in Full-Stack Development",
-      focus: "System Architecture & DevOps",
-      quote: "Great technology should feel like magic."
+      image: "https://api.dicebear.com/7.x/thumbs/svg?seed=ananya",
+      bio: "Tech-first problem solver with hands-on experience in web, mobile, and backend systems across multiple domains.",
+      education: "M.Tech in Computer Science, BITS Pilani",
+      experience: "2+ years in Full-Stack Development & Automation",
+      focus: "System Architecture, DevOps & Technical Delivery",
+      quote: "Scalable tech isn’t just built — it’s engineered with intent."
     },
-    {
-      name: "Nitish Maurya",
-      role: "Head of Product",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
-      bio: "Product strategist and design thinker who creates experiences that users actually love.",
-      education: "Product Management & Design",
-      experience: "3+ years in Product Development",
-      focus: "User Experience & Design",
-      quote: "Good design is good business."
-    }
-  ];
+  ];  
 
   const values = [
     {

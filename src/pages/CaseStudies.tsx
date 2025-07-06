@@ -489,7 +489,10 @@ const CaseStudies: React.FC<CaseStudiesProps> = ({
                             Start Your Project
                             <ExternalLink className="w-4 h-4" />
                           </button>
-                          <button className="border border-[#333] text-white px-8 py-3 rounded-xl font-semibold hover:border-[#0070f3] hover:bg-[#0070f3]/10 transition-all duration-300">
+                          <button 
+                            onClick={onContactClick}
+                            className="border border-[#333] text-white px-8 py-3 rounded-xl font-semibold hover:border-[#0070f3] hover:bg-[#0070f3]/10 transition-all duration-300"
+                          >
                             Schedule Consultation
                           </button>
                         </div>

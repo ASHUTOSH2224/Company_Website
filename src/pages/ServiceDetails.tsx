@@ -1048,7 +1048,10 @@ const ServiceDetails: React.FC<ServiceDetailsProps> = ({
                   Start Your Project
                   <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </button>
-                <button className="border-2 border-[#333] text-white px-10 lg:px-12 py-4 lg:py-5 rounded-2xl text-lg lg:text-xl font-semibold hover:border-[#0070f3] hover:bg-[#0070f3]/10 transition-all duration-300 inline-flex items-center gap-3">
+                <button 
+                  onClick={onContactClick}
+                  className="border-2 border-[#333] text-white px-10 lg:px-12 py-4 lg:py-5 rounded-2xl text-lg lg:text-xl font-semibold hover:border-[#0070f3] hover:bg-[#0070f3]/10 transition-all duration-300 inline-flex items-center gap-3"
+                >
                   Schedule Consultation
                   <Clock size={20} />
                 </button>

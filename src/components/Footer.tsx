@@ -142,9 +142,24 @@ export const Footer: React.FC<FooterProps> = ({ currentPage, setCurrentPage, onS
             © 2025 Upstraiq. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <button className="nav-link">Privacy Policy</button>
-            <button className="nav-link">Terms of Service</button>
-            <button className="nav-link">Cookie Policy</button>
+            <button 
+              onClick={() => setCurrentPage('privacy-policy')}
+              className="nav-link hover:text-[#0070f3] transition-colors duration-300"
+            >
+              Privacy Policy
+            </button>
+            <button 
+              onClick={() => setCurrentPage('terms-of-service')}
+              className="nav-link hover:text-[#0070f3] transition-colors duration-300"
+            >
+              Terms of Service
+            </button>
+            <button 
+              onClick={() => setCurrentPage('cookie-policy')}
+              className="nav-link hover:text-[#0070f3] transition-colors duration-300"
+            >
+              Cookie Policy
+            </button>
           </div>
         </div>
       </div>

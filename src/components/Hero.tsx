@@ -3,9 +3,10 @@ import { ArrowRight, Star, TrendingUp, Sparkles, Zap, Rocket, Brain, Code, Termi
 
 interface HeroProps {
   onContactClick?: () => void;
+  onServicesClick?: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
+export const Hero: React.FC<HeroProps> = ({ onContactClick, onServicesClick }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [textComplete, setTextComplete] = useState(false);
@@ -98,7 +99,9 @@ export const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
             </div>
             
             <div className="overflow-hidden">
-              <button className={`group relative border-2 border-[#333] bg-black/80 backdrop-blur-lg text-white px-6 lg:px-8 py-3 lg:py-4 rounded-xl text-base lg:text-lg font-bold hover:border-[#0070f3] hover:bg-[#0070f3]/10 transition-all duration-500 hover:scale-105 hover:-translate-y-1 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+              <button 
+                onClick={onServicesClick}
+                className={`group relative border-2 border-[#333] bg-black/80 backdrop-blur-lg text-white px-6 lg:px-8 py-3 lg:py-4 rounded-xl text-base lg:text-lg font-bold hover:border-[#0070f3] hover:bg-[#0070f3]/10 transition-all duration-500 hover:scale-105 hover:-translate-y-1 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
                 style={{ transitionDelay: '1400ms' }}
               >
                 <span className="flex items-center gap-2">

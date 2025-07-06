@@ -70,7 +70,7 @@ export const About: React.FC<AboutProps> = ({ currentPage, onContactClick }) => 
       icon: TrendingUp,
       title: "Scaling Up",
       date: "Present",
-      description: "Now serving 150+ businesses worldwide with AI solutions that actually work.",
+      description: "Now serving 5+ businesses worldwide with AI solutions that actually work.",
       milestone: "Growth"
     }
   ];
@@ -132,7 +132,7 @@ export const About: React.FC<AboutProps> = ({ currentPage, onContactClick }) => 
   ];
 
   const stats = [
-    { icon: Code, value: '150+', label: 'Projects Delivered', color: 'text-[#0070f3]' },
+    { icon: Code, value: '5+', label: 'Projects Delivered', color: 'text-[#0070f3]' },
     { icon: Star, value: '98%', label: 'Client Satisfaction', color: 'text-[#50e3c2]' },
     { icon: Clock, value: '24/7', label: 'AI Support', color: 'text-[#0070f3]' },
     { icon: Trophy, value: '10x', label: 'Average ROI', color: 'text-[#50e3c2]' }

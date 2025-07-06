@@ -115,7 +115,7 @@ const ServiceDetails: React.FC<ServiceDetailsProps> = ({
       category: "ai",
       duration: "6-8 weeks",
       rating: 4.9,
-      clients: "150+"
+      clients: "5+"
     },
     'ecommerce': {
       title: "E-commerce Platforms",

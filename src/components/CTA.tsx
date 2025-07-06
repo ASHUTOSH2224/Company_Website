@@ -68,7 +68,7 @@ export const CTA: React.FC<CTAProps> = ({ onContactClick, currentPage = 'home' }
   ];
 
   const stats = [
-    { value: '150+', label: 'Projects Delivered' },
+    { value: '5+', label: 'Projects Delivered' },
     { value: '98%', label: 'Client Satisfaction' },
     { value: '24/7', label: 'Expert Support' },
     { value: '15+', label: 'Industries Served' }
@@ -92,7 +92,7 @@ export const CTA: React.FC<CTAProps> = ({ onContactClick, currentPage = 'home' }
           </h2>
           
           <p className="text-body max-w-3xl mx-auto mb-8">
-            Join 150+ companies that have already revolutionized their operations with our AI solutions. 
+            Join 3+ companies that have already revolutionized their operations with our AI solutions. 
             Start your transformation journey today with a free consultation.
           </p>
         </div>

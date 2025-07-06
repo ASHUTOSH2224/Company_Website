@@ -110,7 +110,7 @@ const services = [
       category: "ai",
       duration: "6-8 weeks",
       rating: 4.9,
-      clients: "150+",
+      clients: "5+",
       badge: "Most Popular",
       id: "ai-marketing"
     },

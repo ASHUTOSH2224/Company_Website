@@ -147,7 +147,7 @@ export const WhatWeBuild: React.FC<WhatWeBuildProps> = ({ onContactClick }) => {
           <div className="bg-black border border-[#333] rounded-3xl p-8 lg:p-12 max-w-5xl mx-auto hover:border-[#0070f3] transition-colors duration-300">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
               {[
-                { value: '150+', label: 'Projects Delivered', icon: TrendingUp },
+                { value: '5+', label: 'Projects Delivered', icon: TrendingUp },
                 { value: '98%', label: 'Client Satisfaction', icon: Star },
                 { value: '24/7', label: 'AI Support', icon: Bot },
                 { value: '10x', label: 'ROI Improvement', icon: Shield }

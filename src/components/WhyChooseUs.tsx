@@ -82,7 +82,7 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ onContactClick, curren
   const stats = [
     {
       icon: Users,
-      number: '150+',
+      number: '6+',
       label: 'Projects Delivered',
       description: 'Successful AI implementations',
       color: 'text-[#0070f3]'

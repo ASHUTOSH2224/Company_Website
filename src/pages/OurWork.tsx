@@ -152,33 +152,32 @@ const OurWork: React.FC<OurWorkProps> = ({ currentPage, onContactClick }) => {
     }
   ];
 
-  const testimonials = [
+  const testimonials = [ 
     {
-      name: "Sarah Johnson",
-      position: "CTO, TechStore Inc.",
-      content: "UPSTRAIQ transformed our e-commerce platform with cutting-edge AI. The results exceeded all our expectations!",
-      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+      name: "Ritika Mehra",
+      position: "Co-Founder, AgrifyTech Pvt. Ltd.",
+      content: "Collaborating with UPSTRAIQ felt like working with an internal team. Their ideas were fresh, execution was quick, and they truly understood our startup pace.",
+      avatar: "https://api.dicebear.com/7.x/thumbs/svg?seed=ritika",
       rating: 5,
-      project: "AI-Powered E-commerce Platform"
+      project: "AI-based Crop Health Monitoring System"
     },
     {
-      name: "Dr. Michael Chen",
-      position: "Director, MediCore Solutions",
-      content: "The healthcare management system has revolutionized our patient care process. Truly innovative work!",
-      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+      name: "Ankit Rathi",
+      position: "Founder & CEO, MedEase Technologies",
+      content: "UPSTRAIQ’s approach is both agile and innovative. They brought clarity to our product vision and helped us launch faster than expected.",
+      avatar: "https://api.dicebear.com/7.x/thumbs/svg?seed=ankit",
       rating: 5,
-      project: "Smart Healthcare Management System"
+      project: "Telemedicine Platform for Tier-2 Cities"
     },
     {
-      name: "Alex Rodriguez",
-      position: "Founder, CryptoMax Ltd.",
-      content: "Professional, reliable, and delivered beyond our requirements. The trading platform is performing exceptionally.",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+      name: "Pooja Nair",
+      position: "Product Head, Finwise Innovations",
+      content: "From design to deployment, UPSTRAIQ showed remarkable ownership. It’s rare to find a team that’s so aligned with the startup hustle.",
+      avatar: "https://api.dicebear.com/7.x/thumbs/svg?seed=pooja",
       rating: 5,
-      project: "Cryptocurrency Trading Platform"
+      project: "AI-powered Personal Finance App"
     }
-  ];
-
+];
 
 
 
@@ -223,9 +222,9 @@ const OurWork: React.FC<OurWorkProps> = ({ currentPage, onContactClick }) => {
               <div className="relative max-w-4xl mx-auto">
                 <div className="overflow-hidden">
                   <p className={`text-xl lg:text-2xl xl:text-3xl text-[#ccc] leading-relaxed font-medium drop-shadow-lg transition-all duration-1000 ease-out delay-600 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                    Discover how we've transformed businesses with <span className="text-[#50e3c2] font-bold">cutting-edge AI solutions</span>, 
-                    <span className="text-[#0070f3] font-bold"> innovative web applications</span>, and 
-                    <span className="text-[#50e3c2] font-bold"> game-changing mobile experiences</span>.
+                    We're a passionate startup ready to bring your ideas to life with <span className="text-[#50e3c2] font-bold">innovative AI solutions</span>, 
+                    <span className="text-[#0070f3] font-bold"> cutting-edge web applications</span>, and 
+                    <span className="text-[#50e3c2] font-bold"> transformative mobile experiences</span>.
                   </p>
                 </div>
                 {/* Decorative animated lines */}
@@ -237,10 +236,10 @@ const OurWork: React.FC<OurWorkProps> = ({ currentPage, onContactClick }) => {
             {/* Stats matching Hero style */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 max-w-5xl mx-auto">
               {[
-                { icon: Target, value: '50+', label: 'Projects Delivered', delay: '1200ms' },
-                { icon: Users, value: '30+', label: 'Happy Clients', delay: '1300ms' },
-                { icon: Award, value: '98%', label: 'Success Rate', delay: '1400ms' },
-                { icon: Star, value: '4.9', label: 'Client Rating', delay: '1500ms' }
+                { icon: Target, value: '5+', label: 'Projects in Pipeline', delay: '1200ms' },
+                { icon: Users, value: '3+', label: 'Early Adopters', delay: '1300ms' },
+                { icon: Award, value: '100%', label: 'Commitment to Quality', delay: '1400ms' },
+                { icon: Star, value: '5.0', label: 'Client Satisfaction', delay: '1500ms' }
               ].map((stat, index) => {
                 const Icon = stat.icon;
                 return (
@@ -262,10 +261,10 @@ const OurWork: React.FC<OurWorkProps> = ({ currentPage, onContactClick }) => {
         </div>
       </section>
 
-      {/* Projects Section */}
+      {/* Projects Section - Commented out for startup phase */}
+      {/* 
       <section className="relative py-20 lg:py-32">
         <div className="container-custom">
-          {/* Projects Section Heading */}
           <div className="text-center mb-16 lg:mb-24">
             <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 lg:mb-8 font-space">
               Featured <span className="gradient-text-accent">Projects</span>
@@ -275,7 +274,6 @@ const OurWork: React.FC<OurWorkProps> = ({ currentPage, onContactClick }) => {
             </p>
           </div>
 
-          {/* Projects Grid - 1 column layout with increased width */}
           <div className="grid grid-cols-1 gap-12 lg:gap-16 max-w-7xl mx-auto">
             {projects.map((project, index) => {
               const Icon = project.icon;
@@ -293,7 +291,6 @@ const OurWork: React.FC<OurWorkProps> = ({ currentPage, onContactClick }) => {
                 >
                   <div className="bg-black/80 backdrop-blur-sm border border-[#333] rounded-2xl overflow-hidden hover:transform hover:-translate-y-3 hover:scale-[1.01] transition-all duration-700 h-full hover:border-[#0070f3] hover:shadow-2xl hover:shadow-[#0070f3]/30">
                     <div className="grid lg:grid-cols-2 gap-0">
-                      {/* Project Image/Video */}
                       <div className="relative aspect-[16/10] lg:aspect-[4/3] overflow-hidden">
                         {playingVideo === project.id ? (
                           <div className="w-full h-full relative">
@@ -307,7 +304,6 @@ const OurWork: React.FC<OurWorkProps> = ({ currentPage, onContactClick }) => {
                               allowFullScreen
                               className="w-full h-full"
                             ></iframe>
-                            {/* Close Video Button */}
                             <button
                               onClick={() => setPlayingVideo(null)}
                               className="absolute top-4 right-4 w-10 h-10 bg-black/80 hover:bg-black/90 rounded-full flex items-center justify-center transition-all duration-300 border border-[#333] hover:border-[#0070f3] z-10"
@@ -323,7 +319,6 @@ const OurWork: React.FC<OurWorkProps> = ({ currentPage, onContactClick }) => {
                               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                             />
                             
-                            {/* Video Play Button */}
                             <div className="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
                               <button
                                 onClick={() => setPlayingVideo(project.id)}
@@ -335,20 +330,17 @@ const OurWork: React.FC<OurWorkProps> = ({ currentPage, onContactClick }) => {
                           </>
                         )}
 
-                      {/* Project Category Badge */}
                       <div className="absolute top-6 left-6">
                         <div className={`w-14 h-14 bg-gradient-to-br ${project.color} rounded-xl flex items-center justify-center shadow-lg`}>
                           <Icon className="w-7 h-7 text-white" />
                         </div>
                       </div>
 
-                        {/* Project Year */}
                         <div className="absolute top-6 right-6 bg-black/80 backdrop-blur-sm px-4 py-2 rounded-lg text-sm text-white font-medium border border-[#333]">
                           {project.year}
                         </div>
                       </div>
 
-                      {/* Project Content */}
                       <div className="p-6 lg:p-8 space-y-4 lg:space-y-6 flex-1 flex flex-col">
                       <div className="space-y-3 flex-1">
                         <h3 className="text-2xl lg:text-3xl font-bold text-white group-hover:text-[#50e3c2] transition-colors duration-300 line-clamp-2 font-space">
@@ -359,7 +351,6 @@ const OurWork: React.FC<OurWorkProps> = ({ currentPage, onContactClick }) => {
                         </p>
                       </div>
 
-                      {/* Project Details */}
                       <div className="grid grid-cols-2 gap-4 lg:gap-6 text-base lg:text-lg">
                         <div className="flex items-center gap-3 text-[#666]">
                           <Calendar className="w-5 h-5 lg:w-6 lg:h-6" />
@@ -371,7 +362,6 @@ const OurWork: React.FC<OurWorkProps> = ({ currentPage, onContactClick }) => {
                         </div>
                       </div>
 
-                      {/* Technology Tags */}
                       <div className="flex flex-wrap gap-3 lg:gap-4">
                         {project.tags.slice(0, 4).map((tag, tagIndex) => (
                           <span
@@ -388,7 +378,6 @@ const OurWork: React.FC<OurWorkProps> = ({ currentPage, onContactClick }) => {
                         )}
                       </div>
 
-                      {/* Action Button */}
                       <div className={`flex justify-start pt-4 transition-all duration-500 ${
                         isHovered ? 'opacity-100 translate-y-0' : 'opacity-80 translate-y-2'
                       }`}>
@@ -411,16 +400,17 @@ const OurWork: React.FC<OurWorkProps> = ({ currentPage, onContactClick }) => {
           </div>
         </div>
       </section>
+      */}
 
       {/* Client Testimonials */}
       <section className="py-16 lg:py-24">
         <div className="container-custom">
           <div className="text-center mb-16 lg:mb-20">
             <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 lg:mb-8">
-              What Our <span className="gradient-text-accent">Clients Say</span>
+              What Our <span className="gradient-text-accent">Early Partners Say</span>
             </h2>
             <p className="text-xl lg:text-2xl text-[#888] max-w-4xl mx-auto leading-relaxed">
-              Don't just take our word for it. Here's what our clients have to say about their experience working with us.
+              We're just getting started, but here's what our early partners have to say about working with our passionate team.
             </p>
           </div>
 
@@ -471,18 +461,18 @@ const OurWork: React.FC<OurWorkProps> = ({ currentPage, onContactClick }) => {
         <div className="container-custom">
           <div className="bg-black/80 backdrop-blur-sm border border-[#333] rounded-3xl p-12 lg:p-20 text-center hover:border-[#0070f3] transition-all duration-500 hover:shadow-2xl hover:shadow-[#0070f3]/10">
             <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 lg:mb-8 font-space">
-              Ready to Start Your <span className="gradient-text-accent">Next Project?</span>
+              Ready to Build Something <span className="gradient-text-accent">Amazing Together?</span>
             </h2>
             <p className="text-xl lg:text-2xl text-[#888] mb-12 lg:mb-16 max-w-4xl mx-auto leading-relaxed">
-              Let's discuss how we can bring your vision to life with cutting-edge technology and innovative solutions.
+              As a startup, we bring fresh perspectives, innovative thinking, and passionate dedication to every project. Let's create something extraordinary together.
             </p>
             
             {/* Trust indicators matching Hero style */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-8 lg:gap-12 mb-12 lg:mb-16">
               {[
                 { icon: Sparkles, text: '✨ Free consultation', color: 'bg-[#50e3c2]' },
-                { icon: Target, text: '🎯 Custom solutions', color: 'bg-[#0070f3]' },
-                { icon: TrendingUp, text: '📈 Proven results', color: 'bg-[#50e3c2]' }
+                { icon: Target, text: '🎯 Startup-friendly pricing', color: 'bg-[#0070f3]' },
+                { icon: TrendingUp, text: '📈 Innovative approach', color: 'bg-[#50e3c2]' }
               ].map((item, index) => (
                 <div 
                   key={index}
